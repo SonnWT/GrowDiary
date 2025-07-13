@@ -5,16 +5,22 @@ plugins {
 
 android {
     namespace = "com.example.growdiary"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.growdiary"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        // Contoh: mengaktifkan View Binding atau Data Binding
+        viewBinding = true
+        // dataBinding = true // uncomment jika Anda ingin menggunakan Data Binding
     }
 
     buildTypes {

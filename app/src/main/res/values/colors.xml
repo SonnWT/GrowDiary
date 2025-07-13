@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="orange">#F07E64</color>
+    <color name="cream">#F3D3AC</color>
+    <color name="merah">#E64063</color>
+    <color name="aqua">#2A8C8B</color>
+    <color name="fab_active_color">#C25840</color>
+    <color name="fab_inactive_tint">#F07E64</color>
 </resources>
