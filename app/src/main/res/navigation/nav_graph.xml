@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/diaryFragment">
+
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.example.growdiary.diary.DiaryFragment" />
+
+    <fragment
+        android:id="@+id/newDiary"
+        android:name="com.example.growdiary.diary.NewDiaryFragment"/>
+
+    <fragment
+        android:id="@+id/diary1"
+        android:name="com.example.growdiary.diary.Diary1Fragment"/>
+
+
+
+</navigation>
