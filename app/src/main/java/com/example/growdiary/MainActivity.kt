@@ -7,11 +7,15 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.growdiary.diary.DiaryFragment
 import com.example.growdiary.home.HomeFragment
 import com.example.growdiary.profile.ProfileFragment
 import com.example.growdiary.roadmap.RoadmapFragment
 import com.example.growdiary.vaccine.VaccineFragment
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -35,39 +39,57 @@ class MainActivity : AppCompatActivity() {
         val indicatorDiary: View = findViewById(R.id.indicator_diary)
         val indicatorProfile: View = findViewById(R.id.indicator_profile)
 
+        val bottomNav : MaterialCardView = findViewById(R.id.bottom_nav_card)
+
         navIndicators = listOf(indicatorHome, indicatorVaccine, indicatorDiary, indicatorProfile)
 
-        // --- Atur OnClickListener ---
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.diary1, R.id.newDiary, R.id.diary2 -> {
+                    bottomNav.visibility = View.GONE
+                    fabRoadmap.visibility = View.GONE
+                }
+                else -> {
+                    bottomNav.visibility = View.VISIBLE
+                    fabRoadmap.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        // --- OnClickListeners dengan NavController ---
         navHome.setOnClickListener {
-            replaceFragment(HomeFragment())
+            navController.navigate(R.id.homeFragment)
             setActiveIndicator(indicatorHome)
         }
 
         navVaccine.setOnClickListener {
-            replaceFragment(VaccineFragment())
+            navController.navigate(R.id.vaccineFragment)
             setActiveIndicator(indicatorVaccine)
         }
 
         fabRoadmap.setOnClickListener {
-            replaceFragment(RoadmapFragment())
+            navController.navigate(R.id.roadmapFragment)
             resetIndicators()
-            setFabState(true) // Set FAB menjadi aktif
+            setFabState(true)
         }
 
         navDiary.setOnClickListener {
-            replaceFragment(DiaryFragment())
+            navController.navigate(R.id.diaryFragment)
             setActiveIndicator(indicatorDiary)
         }
 
         navProfile.setOnClickListener {
-            replaceFragment(ProfileFragment())
+            navController.navigate(R.id.profileFragment)
             setActiveIndicator(indicatorProfile)
         }
 
-        // --- Atur Tampilan Awal ---
+        // --- Awal ---
         if (savedInstanceState == null) {
-            replaceFragment(HomeFragment())
-            setActiveIndicator(indicatorHome) // Secara default, Home yang aktif
+            navController.navigate(R.id.homeFragment)
+            setActiveIndicator(indicatorHome)
         }
     }
 
@@ -98,10 +120,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.frame, fragment)
-            commit()
-        }
-    }
 }

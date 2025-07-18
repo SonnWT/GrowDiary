@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "659837843845",
+    "project_id": "growdiary-a88e6",
+    "storage_bucket": "growdiary-a88e6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659837843845:android:877f07bf4b7a032e83ecec",
+        "android_client_info": {
+          "package_name": "com.example.growdiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB68u0VSFYO25zMyu3JQbKdFGesBwfdsXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

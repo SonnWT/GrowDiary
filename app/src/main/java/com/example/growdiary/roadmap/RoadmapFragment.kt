@@ -23,30 +23,30 @@ class RoadmapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Temukan RecyclerView dari layout
-        val recyclerView: RecyclerView = view.findViewById(R.id.rv_roadmap)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+//        val recyclerView: RecyclerView = view.findViewById(R.id.rv_roadmap)
+//        recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Buat data dummy untuk ditampilkan
-        val dummyData = createDummyData()
+//        val dummyData = createDummyData()
 
         // Buat instance dari adapter dan hubungkan ke RecyclerView
-        val adapter = RoadmapAdapter(dummyData)
-        recyclerView.adapter = adapter
+//        val adapter = RoadmapAdapter(dummyData)
+//        recyclerView.adapter = adapter
     }
 
     // Fungsi untuk membuat data contoh
-    private fun createDummyData(): List<RoadmapItem> {
-        return listOf(
-            RoadmapItem("Milestone Terkunci", R.drawable.ic_lock, 2),
-            RoadmapItem("Belajar membalikkan badan", R.drawable.img_milestone_placeholder, 0),
-            RoadmapItem("Belajar meraih benda", R.drawable.img_milestone_placeholder, 1),
-            RoadmapItem("Mulai duduk sendiri", R.drawable.img_milestone_placeholder, 0),
-            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
-            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0),
-            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
-            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0),
-            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
-            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0)
-        )
-    }
+//    private fun createDummyData(): List<RoadmapItem> {
+//        return listOf(
+//            RoadmapItem("Milestone Terkunci", R.drawable.ic_lock, 2),
+//            RoadmapItem("Belajar membalikkan badan", R.drawable.img_milestone_placeholder, 0),
+//            RoadmapItem("Belajar meraih benda", R.drawable.img_milestone_placeholder, 1),
+//            RoadmapItem("Mulai duduk sendiri", R.drawable.img_milestone_placeholder, 0),
+//            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
+//            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0),
+//            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
+//            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0),
+//            RoadmapItem("Merangkak", R.drawable.img_milestone_placeholder, 1),
+//            RoadmapItem("Berdiri dengan bantuan", R.drawable.img_milestone_placeholder, 0)
+//        )
+//    }
 }
