@@ -8,4 +8,8 @@
     <color name="aqua">#2A8C8B</color>
     <color name="fab_active_color">#C25840</color>
     <color name="fab_inactive_tint">#F07E64</color>
+    <color name="green_chart">#2A8C8B</color>
+    <color name="chart_background_color">#FFF2E6</color>
+    <color name="chart_fill_red">#FFCDD2</color>
+    <color name="chart_fill_blue">#B2EBF2</color>
 </resources>
