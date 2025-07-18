@@ -19,22 +19,22 @@ class RoadmapFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_roadmap, container, false)
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        // Temukan RecyclerView dari layout
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Temukan RecyclerView dari layout
 //        val recyclerView: RecyclerView = view.findViewById(R.id.rv_roadmap)
 //        recyclerView.layoutManager = LinearLayoutManager(context)
-//
-//        // Buat data dummy untuk ditampilkan
+
+        // Buat data dummy untuk ditampilkan
 //        val dummyData = createDummyData()
-//
-//        // Buat instance dari adapter dan hubungkan ke RecyclerView
+
+        // Buat instance dari adapter dan hubungkan ke RecyclerView
 //        val adapter = RoadmapAdapter(dummyData)
 //        recyclerView.adapter = adapter
-//    }
-//
-//    // Fungsi untuk membuat data contoh
+    }
+
+    // Fungsi untuk membuat data contoh
 //    private fun createDummyData(): List<RoadmapItem> {
 //        return listOf(
 //            RoadmapItem("Milestone Terkunci", R.drawable.ic_lock, 2),
