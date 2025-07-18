@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cream"
-    tools:context=".diary.NewDiaryFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".diary.Diary2Fragment">
 
     <ImageView
-        android:id="@+id/arrow_back"
+        android:id="@+id/arrow_back_diary1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -27,30 +27,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <EditText
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
+    <TextView
         android:id="@+id/judul"
-        android:hint="Input Diary's Title Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_main"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:inputType="text"
-        android:scrollHorizontally="true"
-        android:ellipsize="end"
-        android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
-        app:layout_constraintBottom_toTopOf="@id/sliderNew"
+        app:layout_constraintBottom_toTopOf="@id/slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
     <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/sliderNew"
+        android:id="@+id/slider"
         android:layout_width="280dp"
         android:layout_height="180dp"
         app:auto_cycle="true"
@@ -63,20 +56,21 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_diary"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/isi_diary"
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:elevation="2dp"
         android:layout_margin="10dp"
         android:gravity="top"
-        android:hint="Input Your Text Here..."
-        android:inputType="textMultiLine"
+        android:lineSpacingExtra="6dp"
         android:overScrollMode="always"
         android:scrollbars="vertical"
         android:background="@drawable/edit_text_bg"
+        android:text=""
         app:layout_constraintTop_toTopOf="@id/bottom_diary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <ImageView
         android:layout_width="200dp"
@@ -121,8 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/bg_putih_diary"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

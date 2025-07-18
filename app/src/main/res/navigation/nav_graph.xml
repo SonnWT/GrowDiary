@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/diaryFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/diaryFragment"
@@ -16,6 +16,30 @@
         android:id="@+id/diary1"
         android:name="com.example.growdiary.diary.Diary1Fragment"/>
 
+    <fragment
+        android:id="@+id/diary2"
+        android:name="com.example.growdiary.diary.Diary2Fragment"/>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.growdiary.home.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/vaccineFragment"
+        android:name="com.example.growdiary.vaccine.VaccineFragment"
+        android:label="Vaccine" />
+
+    <fragment
+        android:id="@+id/roadmapFragment"
+        android:name="com.example.growdiary.roadmap.RoadmapFragment"
+        android:label="Roadmap" />
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.growdiary.profile.ProfileFragment"
+        android:label="Profile" />
 
 
 </navigation>

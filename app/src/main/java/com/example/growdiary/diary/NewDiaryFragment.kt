@@ -12,30 +12,57 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Scroller
 import androidx.navigation.fragment.findNavController
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.growdiary.R
 
 class NewDiaryFragment : Fragment() {
+    private val slideModels = ArrayList<SlideModel>()
 
-    @SuppressLint("ResourceAsColor")
+
+    @SuppressLint("ResourceAsColor", "MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate view dulu
         val view = inflater.inflate(R.layout.fragment_new_diary, container, false)
-        val imageView = view.findViewById<ImageView>(R.id.imageView)
         val back_arrow = view.findViewById<ImageView>(R.id.arrow_back)
         val trash = view.findViewById<ImageView>(R.id.trash)
 
-        var isFirstImage = true
+        val imageSlider = view.findViewById<ImageSlider>(R.id.sliderNew)
 
-        imageView.setOnClickListener {
-            isFirstImage = false
-            if (isFirstImage == false) {
-                imageView.setImageResource(R.drawable.baca)
-                imageView.setBackgroundResource(R.color.cream)
-            }
+        // Tambahkan tombol tambah sekali saja jika belum ada
+        if (slideModels.none { it.imagePath == R.drawable.tambah }) {
+            slideModels.add(SlideModel(R.drawable.tambah))
         }
+
+        imageSlider.setImageList(slideModels, true)
+
+        imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun onItemSelected(position: Int) {
+                val selectedImage = slideModels[position]
+
+                // Jika yang diklik adalah gambar "tambah"
+                if (selectedImage.imagePath == R.drawable.tambah) {
+                    val newImage = SlideModel(R.drawable.baca)
+
+                    // Hapus semua tambah
+                    slideModels.removeAll { it.imagePath == R.drawable.tambah }
+
+                    // Tambahkan gambar baru di awal
+                    slideModels.add(0, newImage)
+
+                    // Tambah kembali tombol tambah di akhir
+                    slideModels.add(SlideModel(R.drawable.tambah))
+
+                    imageSlider.setImageList(slideModels, true)
+                }
+            }
+        })
+
+
 
         back_arrow.setOnClickListener {
             findNavController().navigateUp()

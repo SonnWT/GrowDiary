@@ -47,7 +47,11 @@ class DiaryFragment : Fragment() {
             } else if (position == 1){
                 // ke Fragment B
                 findNavController().navigate(R.id.diary1)
+            }else if (position == 2){
+                // ke Fragment B
+                findNavController().navigate(R.id.diary2)
             }
+
         }
         recyclerView.adapter = adapter
 
