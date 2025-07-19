@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dot_size">8dp</dimen>
+    <dimen name="dot_spacing">6dp</dimen>
+    <dimen name="chart_width_with_margin">358dp</dimen>
+    <dimen name="dialog_vertical_offset">120dp</dimen>
+</resources>
