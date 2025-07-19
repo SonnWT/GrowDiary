@@ -18,14 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/joseph_merangkak" /> <TextView
-        android:id="@+id/diary_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Joseph Merangkak"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:gravity="center_horizontal" />
+            android:src="@drawable/joseph_merangkak" />
+
+        <TextView
+            android:id="@+id/diary_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Joseph Merangkak"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
