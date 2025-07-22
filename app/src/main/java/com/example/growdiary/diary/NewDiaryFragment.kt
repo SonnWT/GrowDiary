@@ -18,8 +18,10 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.growdiary.R
 
 class NewDiaryFragment : Fragment() {
-    private val slideModels = ArrayList<SlideModel>()
 
+    private var awal: ImageView? = null
+    private var silang: ImageView? = null
+    private var imageSlider: ImageSlider? = null
 
     @SuppressLint("ResourceAsColor", "MissingInflatedId")
     override fun onCreateView(
@@ -30,39 +32,58 @@ class NewDiaryFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_new_diary, container, false)
         val back_arrow = view.findViewById<ImageView>(R.id.arrow_back)
         val trash = view.findViewById<ImageView>(R.id.trash)
+        silang = view.findViewById<ImageView>(R.id.silang)
+        awal = view.findViewById<ImageView>(R.id.awal)
 
-        val imageSlider = view.findViewById<ImageSlider>(R.id.sliderNew)
+
+
+        imageSlider = view.findViewById<ImageSlider>(R.id.sliderNew)
 
         // Tambahkan tombol tambah sekali saja jika belum ada
+        val slideModels = ArrayList<SlideModel>()
+
         if (slideModels.none { it.imagePath == R.drawable.tambah }) {
+            slideModels.add(SlideModel(R.drawable.baca))
             slideModels.add(SlideModel(R.drawable.tambah))
         }
+        imageSlider?.setImageList(slideModels, true)
 
-        imageSlider.setImageList(slideModels, true)
+        awal?.setOnClickListener {
+            awal?.visibility = View.INVISIBLE
+            imageSlider?.visibility = View.VISIBLE
+            silang?.visibility = View.VISIBLE
+        }
 
-        imageSlider.setItemClickListener(object : ItemClickListener {
-            override fun onItemSelected(position: Int) {
-                val selectedImage = slideModels[position]
 
-                // Jika yang diklik adalah gambar "tambah"
-                if (selectedImage.imagePath == R.drawable.tambah) {
-                    val newImage = SlideModel(R.drawable.baca)
+//        imageSlider.setItemClickListener(object : ItemClickListener {
+//            override fun onItemSelected(position: Int) {
+//                val selectedImage = slideModels[position]
+//
+//                // Jika yang diklik adalah gambar "tambah"
+//                if (selectedImage.imagePath == R.drawable.tambah) {
+//                    val newImage = SlideModel(R.drawable.baca)
+//
+//                    // Hapus semua tambah
+//                    slideModels.removeAll { it.imagePath == R.drawable.tambah }
+//
+//                    // Tambahkan gambar baru di awal
+//                    slideModels.add(0, newImage)
+//
+//                    // Tambah kembali tombol tambah di akhir
+//                    slideModels.add(SlideModel(R.drawable.tambah))
+//
+//                    imageSlider.setImageList(slideModels, true)
+//                }
+//
+//
+//            }
+//        })
 
-                    // Hapus semua tambah
-                    slideModels.removeAll { it.imagePath == R.drawable.tambah }
+        silang?.setOnClickListener {
+            showCustomPhotoDeleteDialog {
 
-                    // Tambahkan gambar baru di awal
-                    slideModels.add(0, newImage)
-
-                    // Tambah kembali tombol tambah di akhir
-                    slideModels.add(SlideModel(R.drawable.tambah))
-
-                    imageSlider.setImageList(slideModels, true)
-                }
             }
-        })
-
-
+        }
 
         back_arrow.setOnClickListener {
             findNavController().navigateUp()
@@ -95,6 +116,31 @@ class NewDiaryFragment : Fragment() {
 
         btnDelete.setOnClickListener {
             findNavController().navigateUp()
+            alertDialog.dismiss()
+        }
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showCustomPhotoDeleteDialog(onDeleteConfirmed: () -> Unit) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_confirm_photo, null)
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        val btnDelete = dialogView.findViewById<Button>(R.id.delete_btn)
+        val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
+
+        btnDelete.setOnClickListener {
+            awal?.visibility = View.VISIBLE
+            imageSlider?.visibility = View.INVISIBLE
+            // Sembunyikan 'silang' karena gambar yang aktif sekarang adalah 'tambah'
+            silang?.visibility = View.INVISIBLE
             alertDialog.dismiss()
         }
 

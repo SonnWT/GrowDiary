@@ -18,6 +18,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/silang"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_clear_24"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/sliderNew"
+        app:layout_constraintTop_toTopOf="@id/sliderNew"/>
+
+    <ImageView
         android:id="@+id/trash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,13 +59,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:id="@+id/awal"
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:visibility="visible"
+        android:src="@drawable/tambah"
+        app:layout_constraintTop_toBottomOf="@id/judul"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_diary"/>
+
+
+
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/sliderNew"
         android:layout_width="280dp"
         android:layout_height="180dp"
         app:auto_cycle="true"
+        android:visibility="invisible"
         app:delay="0"
-        app:period="2500"
+        app:period="6000"
         app:placeholder="@color/black"
         app:layout_constraintTop_toBottomOf="@id/judul"
         app:layout_constraintStart_toStartOf="parent"

@@ -3,6 +3,7 @@ package com.example.growdiary.diary
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.example.growdiary.R
 
 class Diary1Fragment : Fragment() {
 
+
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class Diary1Fragment : Fragment() {
         val trash = view.findViewById<ImageView>(R.id.trash)
         val editText = view.findViewById<TextView>(R.id.isi_diary)
         val imageSlider = view.findViewById<ImageSlider>(R.id.slider)
+        val silang = view.findViewById<ImageView>(R.id.silang)
 
         val slideModels = ArrayList<SlideModel>()
         slideModels.add(SlideModel(R.drawable.merangkak))
@@ -39,6 +42,7 @@ class Diary1Fragment : Fragment() {
 
 
         imageSlider.setImageList(slideModels, true)
+
 
         val diaryText = """
     <p>Hari ini, tanggal <b>2 Juni 2025</b>, jadi salah satu hari yang tidak akan pernah Mama lupakan. Untuk <b>pertama kalinya</b>, <font color='#000000'>Joseph merangkak sendiri!</font> 🥺💛</p>
@@ -62,6 +66,12 @@ class Diary1Fragment : Fragment() {
             }
         }
 
+        silang.setOnClickListener {
+            showCustomPhotoDeleteDialog {
+
+            }
+        }
+
         imageSlider.setItemClickListener(object : ItemClickListener {
             override fun onItemSelected(position: Int) {
                 val selectedImage = slideModels[position]
@@ -81,6 +91,7 @@ class Diary1Fragment : Fragment() {
 
                     imageSlider.setImageList(slideModels, true)
                 }
+
             }
         })
 
@@ -99,6 +110,27 @@ class Diary1Fragment : Fragment() {
 
         btnDelete.setOnClickListener {
             findNavController().navigateUp()
+            alertDialog.dismiss()
+        }
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showCustomPhotoDeleteDialog(onDeleteConfirmed: () -> Unit) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_confirm_photo, null)
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        val btnDelete = dialogView.findViewById<Button>(R.id.delete_btn)
+        val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
+
+        btnDelete.setOnClickListener {
             alertDialog.dismiss()
         }
 
