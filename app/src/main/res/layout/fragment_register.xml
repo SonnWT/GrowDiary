@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="660dp"
         android:background="@color/white"
-        android:padding="40dp"
+        android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
@@ -88,22 +88,26 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"/>
+                android:hint="Username"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"/>
+                android:hint="Email"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"/>
+                android:hint="Password"
+                android:layout_marginTop="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Confirm Password"/>
+                android:hint="Confirm Password"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton

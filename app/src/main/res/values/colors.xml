@@ -28,4 +28,5 @@
     <color name="dropdown_background">#F0F0F0</color>
 
     <color name="grey">#6B6B6B</color>
+    <color name="light_grey">#E8E8E8</color>
 </resources>

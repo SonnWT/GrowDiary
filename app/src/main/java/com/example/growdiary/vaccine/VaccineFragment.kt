@@ -1,5 +1,6 @@
 package com.example.growdiary.vaccine
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -44,6 +45,11 @@ class VaccineFragment : Fragment() {
         val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList)
         recyclerView.adapter = adapter
         vaccineHistoryRecyclerView.adapter = vaccineHistoryAdapter
+
+//        vaccineHistoryAdapter.onItemClick = {
+//            val intent = Intent(this, VaccineDetails::class.java)
+//            intent.putExtra()
+//        }
     }
 
 }

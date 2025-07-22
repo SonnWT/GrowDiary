@@ -9,7 +9,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -23,16 +22,17 @@
                 android:layout_height="110dp"
                 android:padding="15dp"
                 android:src="@drawable/vaccine_icon"
-                android:background="@color/grey"/>
+                android:background="@color/white"/>
             <TextView
                 android:id="@+id/vaccineHistoryName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:text="Polio Vaccine"
+                android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="15sp"
                 android:gravity="center"
-                android:background="@color/cream"/>
+                android:background="@color/tinted_blue"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
