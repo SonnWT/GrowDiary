@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D1F0E0">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/roadmap_path_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/roadmap"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            app:layout_constraintWidth_percent="0.7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="-20dp" />
+
+        <!--item 1-->
+        <androidx.cardview.widget.CardView
+        android:id="@+id/card_item_1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#F8E5CE"
+        app:layout_constraintTop_toTopOf="@id/roadmap_path_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        android:layout_marginTop="140dp">
+
+        <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_lock"
+        android:padding="20dp"
+        android:scaleType="centerInside" />
+
+    </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bereaksi\nTerhadap\nSuara"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_1"
+            app:layout_constraintTop_toTopOf="@id/card_item_1"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_1"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/rabbit_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/rabbit_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_1"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_1"
+            app:layout_constraintStart_toEndOf="@id/text_item_1"
+            android:layout_marginStart="60dp"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <!--item 2-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baby_sitting"
+            android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menoleh\nketika\nDipanggil\nNamanya"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_2"
+            app:layout_constraintTop_toTopOf="@id/card_item_2"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_2"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/ducks_pond_decor"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ducks_pond_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_2"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_2"
+            app:layout_constraintEnd_toStartOf="@id/text_item_2"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 3-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baby_playing"
+            android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berusaha meraih\nMainan"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_3"
+            app:layout_constraintTop_toTopOf="@id/card_item_3"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_3"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/pacifier_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/pacifier_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_3"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_3"
+            app:layout_constraintStart_toEndOf="@id/text_item_3"
+            android:layout_marginStart="15dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 4-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_sitting"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menoleh ke\nSuara\nKerincingan"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_4"
+            app:layout_constraintTop_toTopOf="@id/card_item_4"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_4"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/bottle_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bottle_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_4"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_4"
+            app:layout_constraintEnd_toStartOf="@id/text_item_4"
+            android:layout_marginEnd="75dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 5-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_5"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="100dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_smile"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengamati Benda -\nbenda Kecil"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_5"
+            app:layout_constraintTop_toTopOf="@id/card_item_5"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_5"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/rattle_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/rattle_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_5"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_5"
+            app:layout_constraintStart_toEndOf="@id/text_item_5"
+            android:layout_marginStart="5dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 6-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_6"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="95dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_terlentang"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terlentang\nSendiri"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_6"
+            app:layout_constraintTop_toTopOf="@id/card_item_6"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_6"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/baby_cute"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/baby_cute_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_6"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_6"
+            app:layout_constraintEnd_toStartOf="@id/text_item_6"
+            android:layout_marginEnd="55dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 7-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_7"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="95dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_smile"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengangkat Dada\nketika Tengkurap"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_7"
+            app:layout_constraintTop_toTopOf="@id/card_item_7"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_7"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/troli_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/troli_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_7"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_7"
+            app:layout_constraintStart_toEndOf="@id/text_item_7"
+            android:layout_marginStart="5dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 8-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_8"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="95dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_sitting"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menoleh ke\nKanan dan ke\nKiri"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_8"
+            app:layout_constraintTop_toTopOf="@id/card_item_8"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_8"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/dino_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/dino_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_8"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_8"
+            app:layout_constraintEnd_toStartOf="@id/text_item_8"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 9-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_9"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="92dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_hold_toy"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Memegang Mainan"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_9"
+            app:layout_constraintTop_toTopOf="@id/card_item_9"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_9"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/star_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/star_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_9"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_9"
+            app:layout_constraintStart_toEndOf="@id/text_item_9"
+            android:layout_marginStart="5dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 10-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_10"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_see_hand"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Memandang\nTangannya\nSendiri"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_10"
+            app:layout_constraintTop_toTopOf="@id/card_item_10"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_10"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/girrafe_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/girrafe_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_10"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_10"
+            app:layout_constraintEnd_toStartOf="@id/text_item_10"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 11-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_11"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="88dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_hand"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tangan saling\nberpegangan"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_11"
+            app:layout_constraintTop_toTopOf="@id/card_item_11"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_11"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/elephant_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/elephant_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_11"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_11"
+            app:layout_constraintStart_toEndOf="@id/text_item_11"
+            android:layout_marginStart="20dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 12-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_12"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_90"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengangkat\nKepala 90\nDerajat ketika\nTengkurap"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_12"
+            app:layout_constraintTop_toTopOf="@id/card_item_12"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_12"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/cute_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/cute_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_12"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_12"
+            app:layout_constraintEnd_toStartOf="@id/text_item_12"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 13-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_13"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_hand_together"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tangan saling\nBerpegangan"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_13"
+            app:layout_constraintTop_toTopOf="@id/card_item_13"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_13"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/moon_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/moon_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_13"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_13"
+            app:layout_constraintStart_toEndOf="@id/text_item_13"
+            android:layout_marginStart="20dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 14-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_14"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_laugh"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tertawa dan\nBerterial"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_14"
+            app:layout_constraintTop_toTopOf="@id/card_item_14"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_14"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/sheep_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/sheep_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_14"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_14"
+            app:layout_constraintEnd_toStartOf="@id/text_item_14"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 15-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_15"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_eye"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mata Mengikuti\nBenda yang\nDigerakkan"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_15"
+            app:layout_constraintTop_toTopOf="@id/card_item_15"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_15"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/bricks_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bricks_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_15"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_15"
+            app:layout_constraintStart_toEndOf="@id/text_item_15"
+            android:layout_marginStart="20dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 16-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_16"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="95dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_45"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengangkat\nKepala 45\nDerajat ketika\nTengkurap"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_16"
+            app:layout_constraintTop_toTopOf="@id/card_item_16"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_16"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/chicken_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/chicken_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_16"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_16"
+            app:layout_constraintEnd_toStartOf="@id/text_item_16"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 17-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_17"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#F8E5CE"
+            app:layout_constraintTop_toBottomOf="@id/card_item_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_spontan"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Membalas\nSenyuman,\nTersenyum Spontan,\ndan Mengoceh"
+            android:gravity="start"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/card_item_17"
+            app:layout_constraintTop_toTopOf="@id/card_item_17"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_17"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/shoe_decor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/shoe_decor"
+            app:layout_constraintTop_toTopOf="@id/text_item_17"
+            app:layout_constraintBottom_toBottomOf="@id/text_item_17"
+            app:layout_constraintStart_toEndOf="@id/text_item_17"
+            android:layout_marginStart="5dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!--item 18-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_item_18"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card_item_17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            android:layout_marginTop="100dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_sound"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_item_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bereaksi\nTerhadap\nSuara"
+            android:gravity="end"
+            android:textColor="@color/aqua"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/card_item_18"
+            app:layout_constraintTop_toTopOf="@id/card_item_18"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_18"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/girrafe_height_decor"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/girrafe_height_decor"
+            app:layout_constraintTop_toTopOf="@id/card_item_18"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_18"
+            app:layout_constraintEnd_toStartOf="@id/text_item_18"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
