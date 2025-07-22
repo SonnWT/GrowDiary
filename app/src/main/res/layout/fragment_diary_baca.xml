@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/cream"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".diary.Diary1Fragment">
+    tools:context=".diary.DiaryBacaFragment">
 
     <ImageView
         android:id="@+id/arrow_back_diary1"
@@ -40,7 +40,7 @@
         android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Joseph Merangkak"
+        android:text="Joseph Membaca"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="25sp"

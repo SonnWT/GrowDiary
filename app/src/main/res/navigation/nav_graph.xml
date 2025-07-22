@@ -52,6 +52,22 @@
         android:name="com.example.growdiary.diary.DiaryFragment" />
 
     <fragment
+        android:id="@+id/diaryLuar1Fragment"
+        android:name="com.example.growdiary.diary.DiaryLuar1Fragment" />
+
+    <fragment
+        android:id="@+id/diaryLuar2Fragment"
+        android:name="com.example.growdiary.diary.DiaryLuar2Fragment" />
+
+    <fragment
+        android:id="@+id/diaryBacaFragment"
+        android:name="com.example.growdiary.diary.DiaryBacaFragment" />
+
+    <fragment
+        android:id="@+id/diaryTambahFragment"
+        android:name="com.example.growdiary.diary.DiaryTambahFragment" />
+
+    <fragment
         android:id="@+id/newDiary"
         android:name="com.example.growdiary.diary.NewDiaryFragment"/>
 
@@ -67,7 +83,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.growdiary.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_diary1"
+            app:destination="@id/diary1" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileDetailFragment"

@@ -30,6 +30,7 @@ class Diary2Fragment : Fragment() {
         val trash = view.findViewById<ImageView>(R.id.trash)
         val editText = view.findViewById<TextView>(R.id.isi_diary)
         val imageSlider = view.findViewById<ImageSlider>(R.id.slider)
+        val silang = view.findViewById<ImageView>(R.id.silang)
 
         val slideModels = ArrayList<SlideModel>()
         slideModels.add(SlideModel(R.drawable.main))
@@ -53,6 +54,12 @@ class Diary2Fragment : Fragment() {
 
         back_arrow.setOnClickListener {
             findNavController().navigateUp()
+        }
+
+        silang.setOnClickListener {
+            showCustomPhotoDeleteDialog {
+
+            }
         }
 
         trash.setOnClickListener {
@@ -97,7 +104,7 @@ class Diary2Fragment : Fragment() {
         val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
 
         btnDelete.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.diaryLuar2Fragment)
             alertDialog.dismiss()
         }
 
@@ -108,4 +115,24 @@ class Diary2Fragment : Fragment() {
         alertDialog.show()
     }
 
+    @SuppressLint("MissingInflatedId")
+    private fun showCustomPhotoDeleteDialog(onDeleteConfirmed: () -> Unit) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_confirm_photo, null)
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        val btnDelete = dialogView.findViewById<Button>(R.id.delete_btn)
+        val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
+
+        btnDelete.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
 }

@@ -3,7 +3,6 @@ package com.example.growdiary.diary
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,16 +17,14 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.growdiary.R
 
-class Diary1Fragment : Fragment() {
-
-
+class DiaryBacaFragment : Fragment() {
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_diary1, container, false)
+        val view = inflater.inflate(R.layout.fragment_diary_baca, container, false)
 
         val trash = view.findViewById<ImageView>(R.id.trash)
         val editText = view.findViewById<TextView>(R.id.isi_diary)
@@ -35,9 +32,7 @@ class Diary1Fragment : Fragment() {
         val silang = view.findViewById<ImageView>(R.id.silang)
 
         val slideModels = ArrayList<SlideModel>()
-        slideModels.add(SlideModel(R.drawable.merangkak))
-        slideModels.add(SlideModel(R.drawable.merangkak2))
-        slideModels.add(SlideModel(R.drawable.merangkak3))
+        slideModels.add(SlideModel(R.drawable.baca))
         slideModels.add(SlideModel(R.drawable.tambah))
 
 
@@ -45,11 +40,11 @@ class Diary1Fragment : Fragment() {
 
 
         val diaryText = """
-    <p>Hari ini, tanggal <b>2 Juni 2025</b>, jadi salah satu hari yang tidak akan pernah Mama lupakan. Untuk <b>pertama kalinya</b>, <font color='#000000'>Joseph merangkak sendiri!</font> 🥺💛</p>
+    <p>Hari ini, tanggal <b>22 Juli 2025</b>, Mama ingin menangis lagi... kali ini bukan karena kamu merangkak, tapi karena kamu <b>membaca untuk pertama kalinya</b>! 😭📖</p>
     
-    <p>Awalnya cuma bolak-balik badan, lalu tiba-tiba dia dorong tubuh mungilnya ke depan, satu tangan... lalu satu lutut... dan dia berhasil! Mama langsung teriak pelan (biar gak bikin kamu kaget 😅), terus air mata ini jatuh juga. Anak kecilku yang dulu cuma bisa digendong sekarang sudah mulai menjelajah dunia kecilnya sendiri.</p>
+    <p>Kita lagi duduk bareng, kamu pegang buku cerita bergambar kesukaanmu. Tiba-tiba kamu tunjuk satu kata dan bilang, "<font color='#000000'><b>k-u-c-i-n-g</b>, kucing!</font>" — dan benar! Mama sampai diam sebentar, antara kaget, terharu, dan gak percaya. Kamu lanjut baca beberapa kata lagi... masih terbata, masih pelan, tapi jelas sekali itu <i>kamu</i> yang membacanya sendiri.</p>
     
-    <p><i>Masih pelan, masih goyah</i>, tapi semangatmu besar sekali. Mama bangga sekali sama kamu, Joseph. Tumbuhlah sehat, kuat, dan bahagia selalu. Langkah kecilmu hari ini adalah awal dari petualangan besar di dunia ini. 🌙</p>
+    <p>Mama tahu kamu sudah berusaha keras belajar huruf demi huruf. Hari ini jadi bukti bahwa semua usaha kecilmu mulai membuahkan hasil. Kamu hebat sekali, Joseph. Teruslah membaca, teruslah penasaran, karena dunia ini penuh dengan kisah indah yang menunggu kamu temukan. Mama bangga luar biasa. 🌟📚</p>
 """.trimIndent()
 
         editText.text = HtmlCompat.fromHtml(diaryText, HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -109,7 +104,7 @@ class Diary1Fragment : Fragment() {
         val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
 
         btnDelete.setOnClickListener {
-            findNavController().navigate(R.id.diaryLuar1Fragment)
+            findNavController().navigate(R.id.diaryFragment)
             alertDialog.dismiss()
         }
 
@@ -140,4 +135,5 @@ class Diary1Fragment : Fragment() {
 
         alertDialog.show()
     }
+
 }
