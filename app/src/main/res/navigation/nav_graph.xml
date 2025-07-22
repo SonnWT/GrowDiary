@@ -9,8 +9,8 @@
         android:id="@+id/loginFragment"
         android:name="com.example.growdiary.loginregister.LoginFragment">
         <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@+id/homeFragment"
+            android:id="@+id/action_loginFragment_to_firstKidFragment"
+            app:destination="@+id/firstKidFragment"
             app:popUpTo="@+id/homeFragment"
             app:popUpToInclusive="true"/>
         <action
