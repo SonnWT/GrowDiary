@@ -30,6 +30,14 @@
         android:name="com.example.growdiary.diary.DiaryLuar2Fragment" />
 
     <fragment
+        android:id="@+id/diaryBacaFragment"
+        android:name="com.example.growdiary.diary.DiaryBacaFragment" />
+
+    <fragment
+        android:id="@+id/diaryTambahFragment"
+        android:name="com.example.growdiary.diary.DiaryTambahFragment" />
+
+    <fragment
         android:id="@+id/newDiary"
         android:name="com.example.growdiary.diary.NewDiaryFragment"/>
 
