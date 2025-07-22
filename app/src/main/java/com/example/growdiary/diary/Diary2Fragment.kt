@@ -104,7 +104,7 @@ class Diary2Fragment : Fragment() {
         val btnCancel = dialogView.findViewById<Button>(R.id.cancel_btn)
 
         btnDelete.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.diaryLuar2Fragment)
             alertDialog.dismiss()
         }
 
