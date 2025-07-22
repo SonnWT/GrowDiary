@@ -69,10 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baloon"
-            android:layout_marginTop="50dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="-30dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_fields"
+            app:layout_constraintTop_toTopOf="@id/login_form"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <LinearLayout
