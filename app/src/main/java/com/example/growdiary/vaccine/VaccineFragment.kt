@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,8 +42,16 @@ class VaccineFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         vaccineHistoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        vaccineHistoryRecyclerView.setHasFixedSize(true)
         val adapter = VaccineToDoAdapter(vaccineList)
-        val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList)
+        val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList) { position ->
+            if (position == 0) {
+                findNavController().navigate(R.id.vaccineDetailFragment)
+            }
+        }
+
+
+
         recyclerView.adapter = adapter
         vaccineHistoryRecyclerView.adapter = vaccineHistoryAdapter
 

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.growdiary.R
 
-class VaccineHistoryAdapter (private val vaccineList: List<Vaccine>) :
+class VaccineHistoryAdapter (private val vaccineList: List<Vaccine>, private val onItemClicked: (Int) -> Unit) :
     RecyclerView.Adapter<VaccineHistoryAdapter.MyViewHolder>() {
 
 //    var onItemClick : ((VaccineDetail) -> Unit)? = null
@@ -33,13 +33,14 @@ class VaccineHistoryAdapter (private val vaccineList: List<Vaccine>) :
             holder.vaccineHistoryImage.setImageResource(vaccine.vaccineImage!!)
         }
 
-//        holder.itemView.setOnClickListener {
-//            onItemClick.invoke(vaccineDetail)
-//        }
+        holder.itemView.setOnClickListener {
+            onItemClicked(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return vaccineList.size
     }
+
 
 }

@@ -117,6 +117,11 @@
         android:label="Vaccine" />
 
     <fragment
+        android:id="@+id/vaccineDetailFragment"
+        android:name="com.example.growdiary.vaccine.VaccineDetailFragment"
+        android:label="VaccineDetail" />
+
+    <fragment
         android:id="@+id/roadmapFragment"
         android:name="com.example.growdiary.roadmap.RoadmapFragment"
         android:label="Roadmap" />

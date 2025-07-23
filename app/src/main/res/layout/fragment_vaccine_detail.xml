@@ -59,12 +59,14 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:padding="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
                 android:background="@color/light_grey">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:text="lorem afdsjlkhfasdjklhfdsa"
+                    android:text="Vaksin polio merupakan bagian penting dari imunisasi anak, yang melindungi anak-anak dari infeksi virus polio yang dapat menyebabkan kelumpuhan. Vaksin polio biasanya diberikan dalam rangkaian empat dosis. Dosis pertama diberikan segera setelah lahir, biasanya antara usia 1 dan 2 bulan, diikuti dengan dosis kedua pada usia 4 bulan, dosis ketiga antara usia 6 dan 18 bulan, dan dosis penguat terakhir antara usia 4 dan 6 tahun. Jadwal vaksinasi ini memastikan kekebalan jangka panjang terhadap polio, dan umumnya tidak diperlukan dosis penguat bagi mereka yang telah menyelesaikan rangkaian vaksinasi. Vaksin ini aman dan efektif, serta berperan penting dalam mencegah penyebaran polio dan menjaga kesehatan masyarakat."
                     android:textSize="16sp"
                     android:padding="10dp"/>
             </ScrollView>
@@ -76,9 +78,22 @@
                 android:textSize="22sp"
                 android:fontFamily="@font/poppins_bold"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="340dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:paddingStart="15dp"
+                    android:paddingBottom="20dp"
+                    android:paddingEnd="15dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
         <ImageView
             android:layout_width="200dp"
