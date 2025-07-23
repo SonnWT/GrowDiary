@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.diary1, R.id.newDiary, R.id.diary2, R.id.firstKidFragment, R.id.loginFragment,
-                     R.id.registerFragment -> { // TAMBAHKAN firstKidFragment DI SINI
+                     R.id.registerFragment, R.id.diaryBacaFragment -> { // TAMBAHKAN firstKidFragment DI SINI
                     bottomNav.visibility = View.GONE
                     fabRoadmap.visibility = View.GONE
                 }
@@ -58,7 +58,11 @@ class MainActivity : AppCompatActivity() {
                     when (destination.id) {
                         R.id.homeFragment -> setActiveIndicator(indicatorHome)
                         R.id.vaccineFragment -> setActiveIndicator(indicatorVaccine)
+                        R.id.vaccineDetailFragment -> setActiveIndicator(indicatorVaccine)
                         R.id.diaryFragment -> setActiveIndicator(indicatorDiary)
+                        R.id.diaryLuar1Fragment -> setActiveIndicator(indicatorDiary)
+                        R.id.diaryLuar2Fragment -> setActiveIndicator(indicatorDiary)
+                        R.id.diaryTambahFragment -> setActiveIndicator(indicatorDiary)
                         R.id.profileFragment -> setActiveIndicator(indicatorProfile) // Pastikan ini merujuk ke ID yang benar
                         R.id.roadmapFragment -> { resetIndicators(); setFabState(true) }
                         else -> resetIndicators()
