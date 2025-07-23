@@ -19,7 +19,14 @@
     <color name="chart_fill_blue">#B2EBF2</color>
 
     <color name="light_cream">#FDF7F5</color>
+    <color name="light_cream_2">#FFF5E9</color>
+    <color name="dark_cream">#B09473</color>
+    <color name="clay">#F07E64</color>
+    <color name="tinted_blue">#2A8C8B</color>
     <color name="text_hint_color">#A0A0A0</color>
     <color name="border_color">#DCDCDC</color>
     <color name="dropdown_background">#F0F0F0</color>
+
+    <color name="grey">#6B6B6B</color>
+    <color name="light_grey">#E8E8E8</color>
 </resources>

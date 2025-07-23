@@ -175,7 +175,8 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.diary1, R.id.newDiary, R.id.diary2, R.id.firstKidFragment -> { // TAMBAHKAN firstKidFragment DI SINI
+                R.id.diary1, R.id.newDiary, R.id.diary2, R.id.firstKidFragment, R.id.loginFragment,
+                     R.id.registerFragment -> { // TAMBAHKAN firstKidFragment DI SINI
                     bottomNav.visibility = View.GONE
                     fabRoadmap.visibility = View.GONE
                 }
