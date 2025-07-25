@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.growdiary.loginregister.LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@+id/registerFragment"
+            app:popUpTo="@+id/registerFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.growdiary.loginregister.RegisterFragment">
+        <action
+            android:id="@+id/action_registerFragment_to_firstKidFragment"
+            app:destination="@+id/firstKidFragment"
+            app:popUpTo="@+id/firstKidFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/firstKidFragment"
+        android:name="com.example.growdiary.firstkid.FirstKidFragment"
+        android:label="fragment_first_kid"
+        tools:layout="@layout/fragment_first_kid" >
+        <action
+            android:id="@+id/action_firstKidFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/firstKidFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.example.growdiary.diary.DiaryFragment" />
+
+    <fragment
+        android:id="@+id/diaryLuar1Fragment"
+        android:name="com.example.growdiary.diary.DiaryLuar1Fragment" />
+
+    <fragment
+        android:id="@+id/diaryLuar2Fragment"
+        android:name="com.example.growdiary.diary.DiaryLuar2Fragment" />
+
+    <fragment
+        android:id="@+id/diaryBacaFragment"
+        android:name="com.example.growdiary.diary.DiaryBacaFragment" />
+
+    <fragment
+        android:id="@+id/diaryTambahFragment"
+        android:name="com.example.growdiary.diary.DiaryTambahFragment" />
+
+    <fragment
+        android:id="@+id/newDiary"
+        android:name="com.example.growdiary.diary.NewDiaryFragment"/>
+
+    <fragment
+        android:id="@+id/diary1"
+        android:name="com.example.growdiary.diary.Diary1Fragment"/>
+
+    <fragment
+        android:id="@+id/diary2"
+        android:name="com.example.growdiary.diary.Diary2Fragment"/>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.growdiary.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_diary1"
+            app:destination="@id/diary1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileDetailFragment"
+        android:name="com.example.growdiary.profile.ProfileDetailFragment"
+        android:label="ProfileDetail"
+        tools:layout="@layout/fragment_profile_detail">
+        <action
+            android:id="@+id/action_profileDetailFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.growdiary.profile.EditProfileFragment"
+        android:label="EditProfile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileDetailFragment"
+            app:destination="@id/profileDetailFragment"
+            app:popUpTo="@id/profileDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/vaccineFragment"
+        android:name="com.example.growdiary.vaccine.VaccineFragment"
+        android:label="Vaccine" />
+
+    <fragment
+        android:id="@+id/vaccineDetailFragment"
+        android:name="com.example.growdiary.vaccine.VaccineDetailFragment"
+        android:label="VaccineDetail" />
+
+    <fragment
+        android:id="@+id/roadmapFragment"
+        android:name="com.example.growdiary.roadmap.RoadmapFragment"
+        android:label="Roadmap" />
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.growdiary.profile.ProfileFragment"
+        android:label="Profile" />
+
+
+</navigation>

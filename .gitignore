@@ -1,15 +1,35 @@
-*.iml
-.gradle
+# ===================================
+#      File & Folder Build
+# ===================================
+/build/
+.gradle/
+.externalNativeBuild/
+.cxx/
+
+# ===================================
+#      Properti & Kunci Lokal
+# ===================================
+# Berisi path SDK dan API key yang tidak boleh di-commit
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+
+# Berisi kunci untuk signing aplikasi
+*.jks
+*.keystore
+
+# ===================================
+#   File IDE (Android Studio & IntelliJ)
+# ===================================
+# Mengabaikan semua file modul
+*.iml
+
+# Mengabaikan seluruh folder .idea yang berisi konfigurasi workspace pengguna
+.idea/
+
+# ===================================
+#         File Lainnya
+# ===================================
+# Folder untuk screenshot dari Android Studio
+/captures/
+
+# File sistem operasi (macOS)
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties

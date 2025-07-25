@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">GrowDiary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_merangkak">Joseph Merangkak</string>
+    <string name="title_bicara">Joseph Bicara</string>
+    <string name="title_baca">Joseph Membaca</string>
+    <string name="title_jalan">Joseph Jalan</string>
+    <string name="title_main">Joseph Main</string>
+    <string name="title_main_air">Joseph Main Air</string>
+    <string name="title_makan">Joseph Makan</string>
+    <string name="title_tengkurap">Joseph Tengkurap</string>
+
+
+    <string name="isi_diary1">Hari ini, tanggal 2 Juni 2025, jadi salah satu hari yang tidak akan pernah Mama lupakan. Untuk pertama kalinya, Joseph merangkak sendiri! 😭💛
+
+Awalnya cuma bolak-balik badan, lalu tiba-tiba dia dorong tubuh mungilnya ke depan, satu tangan… lalu satu lutut… dan dia berhasil! Mama langsung teriak pelan (biar gak bikin kamu kaget 😅), terus air mata ini jatuh juga. Anak kecilku yang dulu cuma bisa digendong sekarang sudah mulai menjelajah dunia kecilnya sendiri.
+Masih pelan, masih goyah, tapi semangatmu besar sekali. Mama bangga sekali sama kamu, Joseph. Tumbuhlah sehat, kuat, dan bahagia selalu. Langkah kecilmu hari ini adalah awal dari petualangan besar di dunia ini. 💫
+
+</string>
 </resources>
