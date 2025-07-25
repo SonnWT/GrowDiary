@@ -86,7 +86,7 @@ class NewDiaryFragment : Fragment() {
         }
 
         back_arrow.setOnClickListener {
-            findNavController().navigate(R.id.diaryTambahFragment)
+            findNavController().navigateUp()
         }
 
         trash.setOnClickListener {
