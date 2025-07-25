@@ -15,6 +15,7 @@ mpandroidchart = "3.1.0"
 googleGmsGoogleServices = "4.4.3"
 firebaseFirestore = "25.1.4"
 navigation = "2.7.7"
+navigationFragmentKtx = "2.9.2"
 
 
 [libraries]
@@ -32,6 +33,7 @@ androidx-cardview = { group = "androidx.cardview", name = "cardview", version.re
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

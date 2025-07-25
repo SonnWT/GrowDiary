@@ -1,5 +1,6 @@
 package com.example.growdiary.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.growdiary.R
 import com.google.android.material.button.MaterialButton
@@ -14,6 +16,7 @@ import com.google.android.material.imageview.ShapeableImageView
 
 class ProfileDetailFragment : Fragment() {
 
+    private val viewModel: ProfileViewModel by activityViewModels()
     private lateinit var profileImage: ShapeableImageView
     private lateinit var textName: TextView
     private lateinit var btnEditProfile: MaterialButton
@@ -47,23 +50,40 @@ class ProfileDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set initial data (replace with actual data loading later)
-        textName.text = "Joseph"
-        textDob.text = "16 June 2025"
-        textGender.text = "Male"
-        textWeight.text = "20 kg"
-        textHeight.text = "78 cm"
-        textNotes.text = "Joseph alergi susu sapi dan kacang tanah. Joseph juga tidak bisa tidur jika tidak dibacakan dongeng."
-        profileImage.setImageResource(R.drawable.profile_joseph) // Assuming you have profile_joseph drawable
+        // 1. Ambil posisi dari arguments
+        val position = arguments?.getInt("childPosition") ?: -1
+
+        if (position != -1) {
+            // 2. Ambil data anak dari ViewModel
+            val child = viewModel.getChildAt(position)
+
+            // 3. Tampilkan data di UI
+            if (child != null) {
+                textName.text = child.name
+                textDob.text = child.birthDate
+                textGender.text = child.gender
+                textWeight.text = "${child.weight} kg"
+                textHeight.text = "${child.height} cm"
+                textNotes.text = child.notes
+
+                if (child.imageUri != null) {
+                    profileImage.setImageURI(Uri.parse(child.imageUri))
+                } else {
+                    profileImage.setImageResource(R.drawable.ic_launcher_background) // Placeholder
+                }
+            }
+        }
 
         btnEditProfile.setOnClickListener {
-            // Navigate to EditProfileFragment
-            findNavController().navigate(R.id.action_profileDetailFragment_to_editProfileFragment)
+            // Saat edit, kirim juga posisinya agar halaman edit tahu anak mana yg di-edit
+            val bundle = Bundle().apply {
+                putInt("childPosition", position)
+            }
+            findNavController().navigate(R.id.action_profileDetailFragment_to_editProfileFragment, bundle)
         }
 
         btnBack.setOnClickListener {
-            // Navigate back to HomeFragment
-            findNavController().popBackStack(R.id.homeFragment, false) // Pop all backstack until homeFragment
+            findNavController().popBackStack()
         }
     }
 }
