@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Menu Profil"
-            android:src="@android:drawable/ic_menu_more"
+            android:src="@drawable/ic_menu_three"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Tambah Anak"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="@id/tv_section_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_section_title" />

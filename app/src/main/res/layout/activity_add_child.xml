@@ -7,12 +7,6 @@
     android:background="#F07E64"
     tools:context=".profile.AddChildActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="git pull --rebase origin develop" />
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"

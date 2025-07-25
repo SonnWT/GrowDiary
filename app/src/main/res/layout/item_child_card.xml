@@ -74,7 +74,7 @@
             android:layout_marginEnd="24dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Menu Opsi Anak"
-            android:src="@android:drawable/ic_menu_more"
+            android:src="@drawable/ic_menu_three"
             app:layout_constraintBottom_toBottomOf="@id/tv_child_birthdate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_child_name" />
