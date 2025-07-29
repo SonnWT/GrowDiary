@@ -38,12 +38,12 @@
         app:layout_constraintHorizontal_bias="0.15"
         android:layout_marginTop="140dp">
 
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_lock"
-        android:padding="20dp"
-        android:scaleType="centerInside" />
+            <ImageView
+                android:id="@+id/image_item_1" android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_lock"
+                android:padding="20dp"
+                android:scaleType="centerInside" />
 
     </androidx.cardview.widget.CardView>
 
@@ -92,10 +92,10 @@
             android:layout_marginTop="90dp">
 
             <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/baby_sitting"
-            android:scaleType="centerCrop"/>
+                android:id="@+id/image_item_2"  android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baby_sitting"
+                android:scaleType="centerCrop"/>
 
         </androidx.cardview.widget.CardView>
 
