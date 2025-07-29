@@ -93,7 +93,7 @@ class RoadmapFragment : Fragment() {
                 // TODO: Buat dan muat Roadmap7_12MonthsFragment()
                 // Untuk saat ini, kita bisa fallback atau tampilkan placeholder
                 // return Roadmap7_12MonthsFragment()
-                Roadmap0_6MonthsFragment() // Sementara gunakan 0-6 Bulan sebagai placeholder
+                Roadmap6_12MonthsFragment() // Sementara gunakan 0-6 Bulan sebagai placeholder
             }
             2 -> {
                 // TODO: Buat dan muat Roadmap1_2YearsFragment()
