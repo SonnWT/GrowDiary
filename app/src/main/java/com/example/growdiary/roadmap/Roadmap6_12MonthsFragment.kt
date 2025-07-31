@@ -14,7 +14,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.cardview.widget.CardView
+import androidx.cardview.widget.CardView // Pastikan CardView diimpor
 import androidx.viewpager2.widget.ViewPager2
 import com.example.growdiary.R
 
@@ -52,15 +52,18 @@ class Roadmap6_12MonthsFragment : Fragment() {
 
             // Logika cerdas untuk pindah ke gambar yang baru ditambahkan
             val realCount = carouselAdapter.getRealItemCount()
+            // Pastikan realCount > 1 untuk menghindari masalah indeks jika hanya ada tombol tambah
             val targetRealPosition = if (addAtStart) {
                 0 // Jika ditambah di awal, tujuannya index 0
             } else {
-                realCount - 2 // Jika ditambah di akhir, tujuannya gambar terakhir sebelum tombol '+'
+                // Jika ditambah di akhir, tujuannya gambar terakhir sebelum tombol '+'
+                // Gunakan coerceAtLeast(1) untuk menghindari error jika realCount menjadi 1
+                (realCount - 2).coerceAtLeast(0)
             }
 
             val currentMiddle = viewPager.currentItem
-            // Gunakan coerceAtLeast(1) untuk menghindari error jika realCount menjadi 1
-            val offsetToCenter = currentMiddle % (realCount - 1).coerceAtLeast(1)
+            // Gunakan realCount.coerceAtLeast(1) untuk menghindari pembagian dengan nol
+            val offsetToCenter = currentMiddle % realCount.coerceAtLeast(1)
             val targetPosition = currentMiddle - offsetToCenter + targetRealPosition
             viewPager.setCurrentItem(targetPosition, false)
         }
@@ -70,26 +73,185 @@ class Roadmap6_12MonthsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Mengembang layout untuk fragment ini
         return inflater.inflate(R.layout.fragment_roadmap6_12_months, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<CardView>(R.id.card_item_2).setOnClickListener {
-            val initialData = listOf(
+        // Menggunakan fungsi bantu untuk menyiapkan setiap CardView dan tombol delete-nya
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_3,
+            deleteButtonId = R.id.delete_button_item_3,
+            thumbnailImageViewId = R.id.image_item3, // ID sesuai XML
+            dialogTitle = "Memanggil\nMama Papa",
+            initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_sitting),
                 CarouselItem.ImageResource(R.drawable.baby_playing),
                 CarouselItem.ImageResource(R.drawable.baby_smile),
                 CarouselItem.AddButton
             )
-            // 3. Panggil dengan perilaku AT_END
-            showCarouselPopupDialog("Menoleh ketika\nDipanggil Namanya", initialData, R.id.image_item_2, AddBehavior.AT_END)
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_4,
+            deleteButtonId = R.id.delete_button_item_4,
+            thumbnailImageViewId = R.id.image_item4, // ID sesuai XML
+            dialogTitle = "Menunjuk untuk\nMeminta sesuatu",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.ImageResource(R.drawable.baby_playing),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_5,
+            deleteButtonId = R.id.delete_button_item_5,
+            thumbnailImageViewId = R.id.image_item5, // ID sesuai XML
+            dialogTitle = "Melambaikan Tangan\n(Bye - Bye)",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_smile),
+                CarouselItem.ImageResource(R.drawable.baby_playing),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_6,
+            deleteButtonId = R.id.delete_button_item_6,
+            thumbnailImageViewId = R.id.image_item6, // ID sesuai XML
+            dialogTitle = "Berdiri Sendiri\nTanpa Dibantu",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_terlentang),
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_7,
+            deleteButtonId = R.id.delete_button_item_7,
+            thumbnailImageViewId = R.id.image_item7, // ID sesuai XML
+            dialogTitle = "Berdiri Dipegang",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_smile),
+                CarouselItem.ImageResource(R.drawable.baby_terlentang),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_8,
+            deleteButtonId = R.id.delete_button_item_8,
+            thumbnailImageViewId = R.id.image_item8, // ID sesuai XML
+            dialogTitle = "Mengucapkan Suku\nKata Bersambung",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.ImageResource(R.drawable.baby_smile),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_9,
+            deleteButtonId = R.id.delete_button_item_9,
+            thumbnailImageViewId = R.id.image_item9, // ID sesuai XML
+            dialogTitle = "Memegang 2 Mainan\ndengan Tangan\nKanan-Kiri",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_hold_toy),
+                CarouselItem.ImageResource(R.drawable.baby_playing),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_10,
+            deleteButtonId = R.id.delete_button_item_10,
+            thumbnailImageViewId = R.id.image_item10, // ID sesuai XML
+            dialogTitle = "Mengucapkan Satu Suku\n Kata: Ba, Pa, Ma",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_see_hand),
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_11,
+            deleteButtonId = R.id.delete_button_item_11,
+            thumbnailImageViewId = R.id.image_item11, // ID sesuai XML
+            dialogTitle = "Mencari Benda Jatuh/Disembunyikan",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_see_hand),
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.AddButton
+            )
+        )
+
+        setupCardViewAndButton(
+            view = view,
+            cardId = R.id.card_item_12,
+            deleteButtonId = R.id.delete_button_item_12,
+            thumbnailImageViewId = R.id.image_item12, // ID sesuai XML
+            dialogTitle = "Duduk Tanpa Dipegang",
+            initialCarouselItems = listOf(
+                CarouselItem.ImageResource(R.drawable.baby_see_hand),
+                CarouselItem.ImageResource(R.drawable.baby_sitting),
+                CarouselItem.AddButton
+            )
+        )
+    }
+
+    // Fungsi bantu untuk menghindari pengulangan kode di onViewCreated
+    private fun setupCardViewAndButton(
+        view: View,
+        cardId: Int,
+        deleteButtonId: Int,
+        thumbnailImageViewId: Int,
+        dialogTitle: String,
+        initialCarouselItems: List<CarouselItem>
+    ) {
+        val cardView: CardView? = view.findViewById(cardId)
+        val deleteButton: ImageView? = view.findViewById(deleteButtonId)
+        val thumbnailImageView: ImageView? = view.findViewById(thumbnailImageViewId)
+
+        // Setel OnClickListener untuk CardView
+        cardView?.setOnClickListener {
+            showCarouselPopupDialog(
+                title = dialogTitle,
+                initialItems = initialCarouselItems,
+                targetImageViewId = thumbnailImageViewId,
+                targetDeleteButtonId = deleteButtonId, // Kirim ID tombol hapus ke dialog
+                addBehavior = AddBehavior.AT_END
+            )
+        }
+
+        // Setel OnClickListener untuk tombol hapus
+        deleteButton?.setOnClickListener {
+            thumbnailImageView?.setImageDrawable(null) // Hapus gambar dari ImageView
+            // Atau jika ada gambar placeholder default, setel ke itu:
+            // thumbnailImageView?.setImageResource(R.drawable.default_placeholder)
+            // Jika Anda memiliki src default di XML, ini akan kembali ke sana.
+
+            deleteButton.visibility = View.GONE // Sembunyikan tombol hapus
+            // Opsional: Reset data terkait jika diperlukan, misalnya di database atau shared preferences
+            // Logika untuk menghapus gambar dari state (misal dari daftar milistone yang disimpan)
         }
     }
 
-    // 2. Tambahkan parameter 'addBehavior' pada fungsi ini
-    private fun showCarouselPopupDialog(title: String, initialItems: List<CarouselItem>, targetImageViewId: Int, addBehavior: AddBehavior) {
+    // 2. Tambahkan parameter 'targetDeleteButtonId' pada fungsi ini
+    private fun showCarouselPopupDialog(title: String, initialItems: List<CarouselItem>, targetImageViewId: Int, targetDeleteButtonId: Int, addBehavior: AddBehavior) {
         carouselItems.clear()
         carouselItems.addAll(initialItems)
 
@@ -112,25 +274,47 @@ class Roadmap6_12MonthsFragment : Fragment() {
             currentAddBehavior = addBehavior
             pickImageLauncher.launch("image/*")
         }
+        // PENTING: Atur callback onItemRemoved di sini!
+        carouselAdapter.onItemRemoved = { realPosition ->
+            // Ketika item dihapus dari carousel, perbarui indikator titik
+            setupDotsIndicator()
+            // Opsional: Jika gambar yang dihapus adalah yang sedang ditampilkan sebagai thumbnail utama,
+            // Anda mungkin ingin menghapus thumbnail utama juga atau menggantinya dengan placeholder.
+            // Ini akan membutuhkan logika yang lebih kompleks untuk melacak thumbnail mana yang sedang ditampilkan.
+            // Untuk saat ini, kita hanya memperbarui indikator titik.
+        }
         viewPager.adapter = carouselAdapter
 
         setThumbnailButton.setOnClickListener {
-            if (carouselItems.size <= 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) return@setOnClickListener
+            // Periksa apakah ada item yang bisa dipilih selain tombol tambah
+            if (carouselAdapter.getRealItemCount() <= 0) {
+                return@setOnClickListener
+            }
 
             val currentPosition = viewPager.currentItem
             val realPosition = currentPosition % carouselAdapter.getRealItemCount()
-            val selectedItem = carouselItems[realPosition]
+            val selectedItem = carouselItems[realPosition] // Menggunakan carouselItems karena realPosition merujuk ke indeks di sini
 
             val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
+            val targetDeleteButton = requireView().findViewById<ImageView>(targetDeleteButtonId) // Dapatkan referensi tombol hapus
 
             when (selectedItem) {
-                is CarouselItem.ImageResource -> targetImageView.setImageResource(selectedItem.drawableRes)
-                is CarouselItem.ImageUri -> targetImageView.setImageURI(selectedItem.uri)
-                is CarouselItem.AddButton -> return@setOnClickListener
+                is CarouselItem.ImageResource -> {
+                    targetImageView?.setImageResource(selectedItem.drawableRes)
+                    targetDeleteButton?.visibility = View.VISIBLE // Tampilkan tombol hapus
+                }
+                is CarouselItem.ImageUri -> {
+                    targetImageView?.setImageURI(selectedItem.uri)
+                    targetDeleteButton?.visibility = View.VISIBLE // Tampilkan tombol hapus
+                }
+                is CarouselItem.AddButton -> {
+                    // Jika tombol tambah terpilih, jangan lakukan apa-apa atau berikan feedback
+                    return@setOnClickListener
+                }
             }
 
-            targetImageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            targetImageView.setPadding(0, 0, 0, 0)
+            targetImageView?.scaleType = ImageView.ScaleType.CENTER_CROP
+            targetImageView?.setPadding(0, 0, 0, 0)
 
             dialog.dismiss()
         }

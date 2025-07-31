@@ -5,18 +5,16 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.growdiary.R
 
@@ -48,12 +46,13 @@ class Roadmap0_6MonthsFragment : Fragment() {
             val targetRealPosition = if (addAtStart) {
                 0 // Jika ditambah di awal, tujuannya index 0
             } else {
-                realCount - 2 // Jika ditambah di akhir, tujuannya gambar terakhir sebelum tombol '+'
+                // Gunakan coerceAtLeast(0) karena mungkin hanya ada tombol tambah
+                (realCount - 2).coerceAtLeast(0)
             }
 
             val currentMiddle = viewPager.currentItem
-            // Gunakan coerceAtLeast(1) untuk menghindari error jika realCount menjadi 1
-            val offsetToCenter = currentMiddle % (realCount - 1).coerceAtLeast(1)
+            // Gunakan realCount.coerceAtLeast(1) untuk menghindari pembagian dengan nol
+            val offsetToCenter = currentMiddle % realCount.coerceAtLeast(1)
             val targetPosition = currentMiddle - offsetToCenter + targetRealPosition
             viewPager.setCurrentItem(targetPosition, false)
         }
@@ -69,25 +68,71 @@ class Roadmap0_6MonthsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<CardView>(R.id.card_item_1).setOnClickListener {
-            val initialData = listOf(CarouselItem.AddButton)
-            // 3. Panggil dengan perilaku AT_START
-            showCarouselPopupDialog("Bereaksi Terhadap\nSuara", initialData, R.id.image_item_1, AddBehavior.AT_START)
-        }
+        // Menggunakan fungsi bantu untuk menyiapkan setiap CardView
+        setupCardView(
+            view = view,
+            cardId = R.id.card_item_1,
+            thumbnailImageViewId = R.id.image_item_1,   // Pastikan ID ini ada di XML
+            dialogTitle = "Bereaksi Terhadap\nSuara",
+            initialCarouselItems = listOf(CarouselItem.AddButton), // Awalnya hanya tombol tambah
+            addBehavior = AddBehavior.AT_START
+        )
 
-        view.findViewById<CardView>(R.id.card_item_2).setOnClickListener {
-            val initialData = listOf(
+        setupCardView(
+            view = view,
+            cardId = R.id.card_item_2,
+            thumbnailImageViewId = R.id.image_item_2,   // Pastikan ID ini ada di XML
+            dialogTitle = "Menoleh ketika\nDipanggil Namanya",
+            initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_sitting),
                 CarouselItem.ImageResource(R.drawable.baby_playing),
                 CarouselItem.ImageResource(R.drawable.baby_smile),
                 CarouselItem.AddButton
-            )
-            // 3. Panggil dengan perilaku AT_END
-            showCarouselPopupDialog("Menoleh ketika\nDipanggil Namanya", initialData, R.id.image_item_2, AddBehavior.AT_END)
-        }
+            ),
+            addBehavior = AddBehavior.AT_END
+        )
+
+        // Anda bisa menambahkan setup untuk card_item_3, dst. di sini jika ada
+        // dengan pola yang sama seperti di Roadmap6_12MonthsFragment.kt
+        // Contoh:
+        /*
+        setupCardView(
+            view = view,
+            cardId = R.id.card_item_3,
+            thumbnailImageViewId = R.id.image_item_3,
+            dialogTitle = "Judul Card 3",
+            initialCarouselItems = listOf(CarouselItem.ImageResource(R.drawable.some_image), CarouselItem.AddButton),
+            addBehavior = AddBehavior.AT_END
+        )
+        */
     }
 
-    // 2. Tambahkan parameter 'addBehavior' pada fungsi ini
+    // Fungsi bantu yang diperbarui tanpa parameter deleteButtonId
+    private fun setupCardView(
+        view: View,
+        cardId: Int,
+        thumbnailImageViewId: Int,
+        dialogTitle: String,
+        initialCarouselItems: List<CarouselItem>,
+        addBehavior: AddBehavior // Tambahkan parameter addBehavior
+    ) {
+        val cardView: CardView? = view.findViewById(cardId)
+        val thumbnailImageView: ImageView? = view.findViewById(thumbnailImageViewId)
+
+        // Setel OnClickListener untuk CardView
+        cardView?.setOnClickListener {
+            showCarouselPopupDialog(
+                title = dialogTitle,
+                initialItems = initialCarouselItems,
+                targetImageViewId = thumbnailImageViewId,
+                addBehavior = addBehavior // Teruskan addBehavior
+            )
+        }
+        // Tidak ada lagi logika untuk tombol delete di tampilan utama di sini
+    }
+
+
+    // Fungsi showCarouselPopupDialog sekarang tanpa targetDeleteButtonId
     private fun showCarouselPopupDialog(title: String, initialItems: List<CarouselItem>, targetImageViewId: Int, addBehavior: AddBehavior) {
         carouselItems.clear()
         carouselItems.addAll(initialItems)
@@ -111,25 +156,49 @@ class Roadmap0_6MonthsFragment : Fragment() {
             currentAddBehavior = addBehavior
             pickImageLauncher.launch("image/*")
         }
+        // PENTING: Atur callback onItemRemoved di sini!
+        carouselAdapter.onItemRemoved = { realPosition ->
+            // Ketika item dihapus dari carousel, perbarui indikator titik
+            setupDotsIndicator()
+            // Logika untuk menghapus gambar thumbnail utama jika carousel menjadi kosong
+            // setelah penghapusan gambar dari carousel popup
+            if (carouselAdapter.getRealItemCount() == 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) {
+                val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
+                targetImageView?.setImageDrawable(null) // Hapus gambar thumbnail utama
+                // Jika ada tombol delete di tampilan utama, Anda bisa menyembunyikannya di sini
+                // Namun, sesuai permintaan, kita tidak mengelola tombol delete utama dari sini.
+            }
+        }
         viewPager.adapter = carouselAdapter
 
         setThumbnailButton.setOnClickListener {
-            if (carouselItems.size <= 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) return@setOnClickListener
+            // Periksa apakah ada item yang bisa dipilih selain tombol tambah
+            if (carouselAdapter.getRealItemCount() <= 0) {
+                return@setOnClickListener
+            }
 
             val currentPosition = viewPager.currentItem
             val realPosition = currentPosition % carouselAdapter.getRealItemCount()
-            val selectedItem = carouselItems[realPosition]
+            val selectedItem = carouselItems[realPosition] // Menggunakan carouselItems karena realPosition merujuk ke indeks di sini
 
             val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
+            // Tidak ada lagi referensi targetDeleteButton di sini
 
             when (selectedItem) {
-                is CarouselItem.ImageResource -> targetImageView.setImageResource(selectedItem.drawableRes)
-                is CarouselItem.ImageUri -> targetImageView.setImageURI(selectedItem.uri)
-                is CarouselItem.AddButton -> return@setOnClickListener
+                is CarouselItem.ImageResource -> {
+                    targetImageView?.setImageResource(selectedItem.drawableRes)
+                }
+                is CarouselItem.ImageUri -> {
+                    targetImageView?.setImageURI(selectedItem.uri)
+                }
+                is CarouselItem.AddButton -> {
+                    // Jika tombol tambah terpilih, jangan lakukan apa-apa atau berikan feedback
+                    return@setOnClickListener
+                }
             }
 
-            targetImageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            targetImageView.setPadding(0, 0, 0, 0)
+            targetImageView?.scaleType = ImageView.ScaleType.CENTER_CROP
+            targetImageView?.setPadding(0, 0, 0, 0)
 
             dialog.dismiss()
         }
