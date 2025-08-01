@@ -106,10 +106,15 @@ class EditProfileFragment2 : Fragment() {
             } catch (e: Exception) {
                 // Biarkan kosong
             }
-            if (childToEdit.imageUri != null) {
+            if (childToEdit.imageResId != null) {
+                // Opsi 1: Jika ada ID dari drawable, gunakan ini.
+                profileImage.setImageResource(childToEdit.imageResId!!)
+            } else if (childToEdit.imageUri != null) {
+                // Opsi 2: Jika ada URI dari galeri/kamera, gunakan ini.
                 profileImage.setImageURI(Uri.parse(childToEdit.imageUri))
             } else {
-                profileImage.setImageResource(R.drawable.ic_launcher_background)
+                // Opsi 3: Jika tidak ada keduanya, tampilkan gambar default.
+                profileImage.setImageResource(R.drawable.baby_icon) // Ganti dengan gambar default Anda
             }
 
         } else {
@@ -186,21 +191,23 @@ class EditProfileFragment2 : Fragment() {
 
     private fun setupDateDropdowns() {
         val days = (1..31).map { it.toString() }
-        val dayAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, days)
+        val dayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, days)
         autocompleteDay.setAdapter(dayAdapter)
+
         val months = listOf("January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December")
-        val monthAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, months)
+        val monthAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, months)
         autocompleteMonth.setAdapter(monthAdapter)
+
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
         val years = (currentYear - 100..currentYear).map { it.toString() }.reversed()
-        val yearAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, years)
+        val yearAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, years)
         autocompleteYear.setAdapter(yearAdapter)
     }
 
     private fun setupGenderDropdown() {
-        val genders = listOf("Laki-laki", "Perempuan")
-        val genderAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, genders)
+        val genders = listOf("Male", "Female")
+        val genderAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, genders)
         autocompleteGender.setAdapter(genderAdapter)
     }
 }

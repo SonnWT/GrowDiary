@@ -34,15 +34,17 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image_edit"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="102dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/profile_joseph"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="56dp"/>
+            app:layout_constraintVertical_bias="0.0"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+            app:srcCompat="@drawable/profile_joseph" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_edit_photo"
@@ -61,15 +63,15 @@
             android:id="@+id/text_name_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Joseph"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto_bold"
+            android:text="Joseph"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/profile_image_edit"
-            app:layout_constraintTop_toTopOf="@id/profile_image_edit"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="16dp"/>
+            app:layout_constraintTop_toTopOf="@id/profile_image_edit" />
 
         <ImageView
             android:id="@+id/btn_edit_name"

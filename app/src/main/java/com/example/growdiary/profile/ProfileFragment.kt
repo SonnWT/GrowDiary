@@ -2,6 +2,7 @@ package com.example.growdiary.profile
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +44,16 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
             val newNotes = data?.getStringExtra("EXTRA_CHILD_NOTES")
 
             if (newName != null && newBirthDate != null && newGender != null && newWeight != null && newHeight != null) {
-                val newChild = Child(newName, newBirthDate, newImageUri, newGender, newWeight, newHeight, newNotes)
+                val newChild = Child(
+                    name = newName,
+                    birthDate = newBirthDate,
+                    imageUri = newImageUri,
+                    imageResId = null, // <-- INI KUNCINYA: Beri nilai null untuk ID drawable
+                    gender = newGender,
+                    weight = newWeight,
+                    height = newHeight,
+                    notes = newNotes
+                )
                 viewModel.addChild(newChild)
             }
         }
@@ -84,10 +94,20 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         }
 
         // Amati data profil pengguna utama
-        viewModel.userProfile.observe(viewLifecycleOwner) { profile: UserProfile ->
-            binding.tvUsername.text = profile.username
-            binding.tvEmail.text = profile.email
-            // Anda bisa tambahkan logika untuk memuat gambar avatar di sini
+        viewModel.userProfile.observe(viewLifecycleOwner) { profile ->
+            // 1. Set username dan email dari data ViewModel (bukan hardcode)
+            binding.tvUsername.text = "Fikri ganteng"
+            binding.tvEmail.text = "fikrilovebaylee@gmail.com"
+
+            // 2. Logika untuk mengatur gambar profil
+            if (profile.avatarUri != null) {
+                // Jika ada URI gambar (dari galeri/kamera), muat dari URI tersebut
+                binding.ivAvatar.setImageURI(Uri.parse(profile.avatarUri))
+            } else {
+                // Jika tidak ada, gunakan gambar default dari drawable
+                // Ganti 'placeholder_avatar' dengan nama file gambar default Anda
+                binding.ivAvatar.setImageResource(R.drawable.fikri)
+            }
         }
 
         binding.btnAddChild.setOnClickListener {
