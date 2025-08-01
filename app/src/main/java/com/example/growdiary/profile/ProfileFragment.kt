@@ -123,7 +123,8 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         val bundle = Bundle().apply {
             putInt("childPosition", position)
         }
-        findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
+        // ✅ GUNAKAN ACTION MILIK ProfileFragment
+        findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment2, bundle)
     }
 
     override fun onDeleteClick(position: Int) {

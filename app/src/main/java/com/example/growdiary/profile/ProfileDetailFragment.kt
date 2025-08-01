@@ -79,7 +79,7 @@ class ProfileDetailFragment : Fragment() {
             val bundle = Bundle().apply {
                 putInt("childPosition", position)
             }
-            findNavController().navigate(R.id.action_profileDetailFragment_to_editProfileFragment, bundle)
+            findNavController().navigate(R.id.action_profileDetailFragment_to_editProfileFragment2, bundle)
         }
 
         btnBack.setOnClickListener {
