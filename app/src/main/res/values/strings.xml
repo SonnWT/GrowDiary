@@ -18,4 +18,28 @@ Awalnya cuma bolak-balik badan, lalu tiba-tiba dia dorong tubuh mungilnya ke dep
 Masih pelan, masih goyah, tapi semangatmu besar sekali. Mama bangga sekali sama kamu, Joseph. Tumbuhlah sehat, kuat, dan bahagia selalu. Langkah kecilmu hari ini adalah awal dari petualangan besar di dunia ini. 💫
 
 </string>
+    <string-array name="profile_options_array">
+        <item>Opsi</item>
+        <item>Profile Edit</item>
+        <item>Logout</item>
+    </string-array>
+    <string-array name="months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>
