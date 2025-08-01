@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Diary"
+        android:fontFamily="@font/roboto_bold"
         android:textColor="@color/pink"
         android:textSize="26sp"
         android:textStyle="bold"
