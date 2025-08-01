@@ -3,7 +3,12 @@ package com.example.growdiary.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.growdiary.R
 import com.example.growdiary.profile.Child // Pastikan import data class Child sudah benar
+import java.time.LocalDate
+import java.time.Period
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 data class UserProfile(
     val username: String,
@@ -21,10 +26,18 @@ class ProfileViewModel : ViewModel() {
 
     init {
         // Isi dengan data awal
-//        _children.value = mutableListOf(
-//            Child("Anak Pertama", "1 Januari 2021", null, "Laki-laki", "10", "75", "Alergi debu."),
-//            Child("Anak Kedua", "15 Maret 2023", null, "Perempuan", "8", "70", "Suka dibacakan dongeng sebelum tidur.")
-//        )
+        _children.value = mutableListOf(
+            Child(
+                name = "Joseph",
+                birthDate = "1 Mei 2024",
+                imageUri = null, // Biarkan null
+                imageResId = R.drawable.baby_icon, // <-- GANTI DENGAN NAMA FILE ANDA
+                gender = "Laki-laki",
+                weight = "10",
+                height = "75",
+                notes = "Alergi debu."
+            )
+        )
         _userProfile.value = UserProfile("Username", "your_domain@email.com", null)
     }
 

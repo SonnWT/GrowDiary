@@ -23,6 +23,7 @@ data class Child(
     val name: String,
     val birthDate: String,
     val imageUri: String? = null,
+    var imageResId: Int? = null,
     val gender: String,
     val weight: String,
     val height: String,
@@ -81,16 +82,20 @@ class ChildAdapter(
         holder.weight.text = "${child.weight} kg"
         holder.height.text = "${child.height} cm"
 
-        // Set gambar
-        if (child.imageUri != null) {
+        if (child.imageResId != null) {
+            // Jika ada ID resource, gunakan setImageResource
+            holder.childPhoto.setImageResource(child.imageResId!!)
+        } else if (child.imageUri != null) {
+            // Jika ada URI string, gunakan setImageURI
             holder.childPhoto.setImageURI(Uri.parse(child.imageUri))
         } else {
-            holder.childPhoto.setImageResource(R.drawable.ic_launcher_background) // Ganti dengan placeholder Anda
+            // Jika tidak ada keduanya, gunakan gambar placeholder
+            holder.childPhoto.setImageResource(R.drawable.baby_icon) // Ganti dengan placeholder Anda
         }
 
         // Hitung dan set umur
         try {
-            val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH)
+            val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale("id", "ID"))
             val birthDate = LocalDate.parse(child.birthDate, formatter)
             val currentDate = LocalDate.now()
             val period = Period.between(birthDate, currentDate)
