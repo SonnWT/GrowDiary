@@ -90,13 +90,27 @@
     </fragment>
 
     <fragment
+        android:id="@+id/profileDetailFragment2"
+        android:name="com.example.growdiary.profile.ProfileDetailFragment2"
+        android:label="ProfileDetail"
+        tools:layout="@layout/fragment_profile_detail2">
+        <action
+            android:id="@+id/action_profileDetailFragment2_to_editProfileFragment2"
+            app:destination="@id/editProfileFragment2" />
+        <argument
+            android:name="childPosition"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
         android:id="@+id/profileDetailFragment"
         android:name="com.example.growdiary.profile.ProfileDetailFragment"
         android:label="ProfileDetail"
         tools:layout="@layout/fragment_profile_detail">
         <action
-            android:id="@+id/action_profileDetailFragment_to_editProfileFragment2"
-            app:destination="@id/editProfileFragment2" />
+            android:id="@+id/action_profileDetailFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
         <argument
             android:name="childPosition"
             app:argType="integer"
