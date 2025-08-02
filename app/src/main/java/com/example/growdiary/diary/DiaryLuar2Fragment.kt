@@ -49,6 +49,8 @@ class DiaryLuar2Fragment : Fragment() {
             } else if (position == 1){
                 // ke Fragment B
                 findNavController().navigate(R.id.diary1)
+            }else{
+                findNavController().navigate(R.id.diary1)
             }
 
         }

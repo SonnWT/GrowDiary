@@ -50,6 +50,8 @@ class DiaryFragment : Fragment() {
             }else if (position == 2){
                 // ke Fragment B
                 findNavController().navigate(R.id.diary2)
+            }else{
+                findNavController().navigate(R.id.diary1)
             }
 
         }

@@ -2,7 +2,7 @@
     android:layout_width="160dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="18dp"
+    android:layout_marginBottom="30dp"
     android:background="@drawable/bg_card_full"
     android:clipToOutline="true"
     android:elevation="4dp"
