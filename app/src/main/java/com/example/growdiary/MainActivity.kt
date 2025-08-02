@@ -1,9 +1,11 @@
 package com.example.growdiary
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
@@ -21,7 +23,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navIndicators: List<View>
     private lateinit var fabRoadmap: FloatingActionButton
     private lateinit var bottomNav : MaterialCardView
+    private lateinit var tulisanRoadMap : TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val navProfile: LinearLayout = findViewById(R.id.nav_profile)
         fabRoadmap = findViewById(R.id.fab_roadmap)
         bottomNav = findViewById(R.id.bottom_nav_card)
+        tulisanRoadMap = findViewById(R.id.tulisanRoadMap)
 
         val indicatorHome: View = findViewById(R.id.indicator_home)
         val indicatorVaccine: View = findViewById(R.id.indicator_vaccine)
@@ -50,10 +55,12 @@ class MainActivity : AppCompatActivity() {
                      R.id.registerFragment, R.id.diaryBacaFragment -> { // TAMBAHKAN firstKidFragment DI SINI
                     bottomNav.visibility = View.GONE
                     fabRoadmap.visibility = View.GONE
+                    tulisanRoadMap.visibility = View.GONE
                 }
                 else -> {
                     bottomNav.visibility = View.VISIBLE
                     fabRoadmap.visibility = View.VISIBLE
+                    tulisanRoadMap.visibility = View.VISIBLE
                     // Set indikator aktif saat kembali ke fragmen navigasi utama
                     when (destination.id) {
                         R.id.homeFragment -> setActiveIndicator(indicatorHome)

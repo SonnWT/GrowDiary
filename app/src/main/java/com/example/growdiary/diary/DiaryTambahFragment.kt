@@ -53,6 +53,8 @@ class DiaryTambahFragment : Fragment() {
             }else if (position == 3){
                 // ke Fragment B
                 findNavController().navigate(R.id.diary2)
+            }else{
+                findNavController().navigate(R.id.diary1)
             }
 
         }
