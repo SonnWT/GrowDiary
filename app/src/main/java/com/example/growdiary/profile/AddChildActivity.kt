@@ -14,6 +14,7 @@ import java.util.Calendar
 
 class AddChildActivity : AppCompatActivity() {
 
+    // Gunakan View Binding, tidak perlu deklarasi manual
     private lateinit var binding: ActivityAddChildBinding
     private var selectedImageUri: Uri? = null
 
@@ -33,8 +34,9 @@ class AddChildActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        setupSpinners()
+        // PERBAIKAN: Panggil nama fungsi yang benar
+        setupDateDropdowns()
+        setupGenderDropdown()
 
         binding.btnChangePhoto.setOnClickListener {
             imagePickerLauncher.launch("image/*")
@@ -42,32 +44,44 @@ class AddChildActivity : AppCompatActivity() {
 
         binding.btnSaveChild.setOnClickListener {
             if (validateInput()) {
-                val childName = binding.etChildName.text.toString().trim()
-                val day = binding.spinnerDay.text.toString()
-                val month = binding.spinnerMonth.text.toString()
-                val year = binding.spinnerYear.text.toString()
-                val birthDate = "$day $month $year"
-                val gender = binding.spinnerGender.text.toString()
-                val weight = binding.etWeight.text.toString().trim()
-                val height = binding.etHeight.text.toString().trim()
-                val notes = binding.etNotes.text.toString().trim()
-
-                val resultIntent = Intent()
-                resultIntent.putExtra("EXTRA_CHILD_NAME", childName)
-                resultIntent.putExtra("EXTRA_CHILD_BIRTHDATE", birthDate)
-                resultIntent.putExtra("EXTRA_CHILD_GENDER", gender)
-                resultIntent.putExtra("EXTRA_CHILD_WEIGHT", weight)
-                resultIntent.putExtra("EXTRA_CHILD_HEIGHT", height)
-                resultIntent.putExtra("EXTRA_CHILD_NOTES", notes)
-                selectedImageUri?.let {
-                    resultIntent.putExtra("EXTRA_CHILD_IMAGE_URI", it.toString())
-                }
-
-                setResult(Activity.RESULT_OK, resultIntent)
-                finish()
+                saveChildData()
             }
         }
     }
+
+    // PERBAIKAN: Fungsi ini perlu ditambahkan
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
+    }
+
+    private fun saveChildData() {
+        val name = binding.etChildName.text.toString()
+
+        // PERBAIKAN: Ambil data dari ID yang benar di XML
+        val day = binding.autocompleteDay.text.toString()
+        val month = binding.autocompleteMonth.text.toString()
+        val year = binding.autocompleteYear.text.toString()
+        val gender = binding.autocompleteGender.text.toString()
+        val weight = binding.etWeight.text.toString()
+        val height = binding.etHeight.text.toString()
+        val notes = binding.etNotes.text.toString()
+
+        val formattedBirthDate = "$day $month $year"
+
+        val resultIntent = Intent()
+        resultIntent.putExtra("EXTRA_CHILD_NAME", name)
+        resultIntent.putExtra("EXTRA_CHILD_BIRTHDATE", formattedBirthDate)
+        resultIntent.putExtra("EXTRA_CHILD_IMAGE_URI", selectedImageUri?.toString())
+        resultIntent.putExtra("EXTRA_CHILD_GENDER", gender)
+        resultIntent.putExtra("EXTRA_CHILD_WEIGHT", weight)
+        resultIntent.putExtra("EXTRA_CHILD_HEIGHT", height)
+        resultIntent.putExtra("EXTRA_CHILD_NOTES", notes)
+
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
+    }
+
 
     private fun validateInput(): Boolean {
         binding.tilChildName.error = null
@@ -78,8 +92,9 @@ class AddChildActivity : AppCompatActivity() {
             binding.tilChildName.error = "Nama tidak boleh kosong"
             return false
         }
-        val selectedGender = binding.spinnerGender.text.toString()
-        if (selectedGender.isEmpty() || selectedGender == "Pilih Gender") {
+        // PERBAIKAN: Ambil data dari ID yang benar
+        val selectedGender = binding.autocompleteGender.text.toString()
+        if (selectedGender.isEmpty()) {
             Toast.makeText(this, "Harap pilih gender", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -94,33 +109,26 @@ class AddChildActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setupSpinners() {
-        // Setup Spinner Hari
+    private fun setupDateDropdowns() {
+        // PERBAIKAN: ArrayAdapter butuh 'this' (Context), bukan 'requireContext' di Activity
         val days = (1..31).map { it.toString() }
-        val dayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
-        // PERBAIKAN: Gunakan .setAdapter(), bukan .adapter =
-        binding.spinnerDay.setAdapter(dayAdapter)
+        val dayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, days)
+        binding.autocompleteDay.setAdapter(dayAdapter)
 
-        // Setup Spinner Bulan
-        val monthAdapter = ArrayAdapter.createFromResource(this, R.array.months_array, android.R.layout.simple_spinner_item)
-        // PERBAIKAN: Gunakan .setAdapter(), bukan .adapter =
-        binding.spinnerMonth.setAdapter(monthAdapter)
+        val months = listOf("Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+        val monthAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, months)
+        binding.autocompleteMonth.setAdapter(monthAdapter)
 
-        // Setup Spinner Tahun
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
-        val years = (currentYear downTo currentYear - 20).map { it.toString() }
-        val yearAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, years)
-        // PERBAIKAN: Gunakan .setAdapter(), bukan .adapter =
-        binding.spinnerYear.setAdapter(yearAdapter)
-
-        // Setup Spinner Gender
-        val genderAdapter = ArrayAdapter.createFromResource(this, R.array.gender_array, android.R.layout.simple_spinner_item)
-        // PERBAIKAN: Gunakan .setAdapter(), bukan .adapter =
-        binding.spinnerGender.setAdapter(genderAdapter)
+        val years = (currentYear - 100..currentYear).map { it.toString() }.reversed()
+        val yearAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, years)
+        binding.autocompleteYear.setAdapter(yearAdapter)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        finish() // Menutup activity saat tombol kembali di toolbar ditekan
-        return true
+    private fun setupGenderDropdown() {
+        val genders = listOf("Laki-laki", "Perempuan")
+        val genderAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genders)
+        binding.autocompleteGender.setAdapter(genderAdapter)
     }
 }

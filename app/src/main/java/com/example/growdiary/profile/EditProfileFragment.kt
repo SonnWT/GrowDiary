@@ -1,5 +1,6 @@
 package com.example.growdiary.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,13 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.growdiary.R
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import java.util.Calendar
 
@@ -30,6 +34,24 @@ class EditProfileFragment : Fragment() {
     private lateinit var editHeight: EditText
     private lateinit var editNotes: EditText
     private lateinit var btnSave: MaterialButton
+    private lateinit var btnEditPhoto: FloatingActionButton
+
+    private var newImageUri: Uri? = null
+    private val imagePickerLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            newImageUri = it
+            profileImage.setImageURI(it)
+            // Tambahkan ini untuk memastikan persistensi URI di seluruh konfigurasi perubahan
+            it.let { uri ->
+                requireContext().contentResolver.takePersistableUriPermission(
+                    uri,
+                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +63,7 @@ class EditProfileFragment : Fragment() {
         profileImage = view.findViewById(R.id.profile_image_edit)
         textName = view.findViewById(R.id.text_name_edit)
         btnEditName = view.findViewById(R.id.btn_edit_name)
+        btnEditPhoto = view.findViewById(R.id.btn_edit_photo)
         autocompleteDay = view.findViewById(R.id.autocomplete_day) // Perubahan: autocomplete_day
         autocompleteMonth = view.findViewById(R.id.autocomplete_month) // Perubahan: autocomplete_month
         autocompleteYear = view.findViewById(R.id.autocomplete_year) // Perubahan: autocomplete_year
@@ -74,16 +97,23 @@ class EditProfileFragment : Fragment() {
         autocompleteGender.setText("Male", false)
 
 
-//        btnEditName.setOnClickListener {
-//            // Implement logic to edit name (e.g., show a dialog)
-//            Toast.makeText(context, "Edit nama Joseph Gunawan", Toast.LENGTH_SHORT).show()
-//        }
+        btnEditName.setOnClickListener {
+            showEditNameDialog()
+        }
+
+        textName.setOnClickListener {
+            showEditNameDialog()
+        }
 
         btnSave.setOnClickListener {
             // Save logic here (e.g., update data in a ViewModel or database)
 //            Toast.makeText(context, "Profil disimpan!", Toast.LENGTH_SHORT).show()
             // Navigate back to ProfileDetailFragment
             findNavController().navigate(R.id.action_editProfileFragment_to_profileDetailFragment)
+        }
+
+        btnEditPhoto.setOnClickListener {
+            imagePickerLauncher.launch("image/*")
         }
     }
 
@@ -124,5 +154,26 @@ class EditProfileFragment : Fragment() {
         autocompleteGender.setOnItemClickListener { parent, view, position, id ->
             // Handle item selection if needed
         }
+    }
+
+    private fun showEditNameDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_edit_name, null)
+        val editTextNewName = dialogView.findViewById<EditText>(R.id.et_new_name)
+        editTextNewName.setText(textName.text)
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Ubah Nama")
+            .setView(dialogView)
+            .setPositiveButton("Simpan") { _, _ ->
+                val newName = editTextNewName.text.toString().trim()
+                if (newName.isNotEmpty()) {
+                    textName.text = newName
+                    Toast.makeText(requireContext(), "Nama diperbarui", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Batal", null)
+            .create()
+        dialog.show()
     }
 }
