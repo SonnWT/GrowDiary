@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.growdiary.R
 import com.example.growdiary.databinding.FragmentProfileBinding
+import com.example.growdiary.loginregister.LoginFragment
 import com.example.growdiary.profile.UserProfile
 
 class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
@@ -127,7 +128,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
                 popupWindow.dismiss()
             }
             btnLogout.setOnClickListener {
-                Toast.makeText(context, "Logout diklik!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_profileFragment_to_LoginFragment)
                 popupWindow.dismiss()
             }
             popupWindow.showAsDropDown(anchorView)
@@ -166,7 +167,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         val bundle = Bundle().apply {
             putInt("childPosition", position)
         }
-        findNavController().navigate(R.id.action_profileFragment_to_profileDetailFragment, bundle)
+        findNavController().navigate(R.id.action_profileFragment_to_profileDetailFragment2, bundle)
     }
 
     override fun onDestroyView() {

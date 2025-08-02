@@ -63,8 +63,11 @@ class MainActivity : AppCompatActivity() {
                         R.id.diaryLuar1Fragment -> setActiveIndicator(indicatorDiary)
                         R.id.diaryLuar2Fragment -> setActiveIndicator(indicatorDiary)
                         R.id.diaryTambahFragment -> setActiveIndicator(indicatorDiary)
-                        R.id.profileFragment -> setActiveIndicator(indicatorProfile) // Pastikan ini merujuk ke ID yang benar
-                        R.id.editProfileFragment -> setActiveIndicator(indicatorProfile) // Pastikan ini merujuk ke ID yang benar
+                        R.id.profileFragment -> setActiveIndicator(indicatorProfile)
+                        R.id.editProfileFragment -> setActiveIndicator(indicatorHome)
+                        R.id.editProfileFragment2 -> setActiveIndicator(indicatorProfile)
+                        R.id.profileDetailFragment->setActiveIndicator(indicatorHome)
+                        R.id.profileDetailFragment2->setActiveIndicator(indicatorProfile)
                         R.id.roadmapFragment -> { resetIndicators(); setFabState(true) }
                         else -> resetIndicators()
                     }
