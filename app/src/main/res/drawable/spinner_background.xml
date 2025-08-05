@@ -11,4 +11,5 @@
         android:height="24dp"
         android:gravity="end|center_vertical"
         android:end="16dp"
-        android:drawable="@drawable/baseline_keyboard_arrow_down_24" /> </layer-list>
+        android:drawable="@drawable/baseline_keyboard_arrow_down_24" />
+</layer-list>
