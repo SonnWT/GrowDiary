@@ -36,12 +36,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vaccine_name"
-        android:src="@drawable/vaccine_icon"/>
+        android:src="@drawable/vaccine_icon_1"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/vaccine_details"
         android:layout_width="match_parent"
         android:layout_height="570dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_white_top"
         app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,40 +53,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins_bold"/>
             
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/light_grey">
+                android:background="@drawable/rounded_grey"
+                android:scrollbarAlwaysDrawVerticalTrack="true">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:paddingHorizontal="20dp"
                     android:text="Vaksin polio merupakan bagian penting dari imunisasi anak, yang melindungi anak-anak dari infeksi virus polio yang dapat menyebabkan kelumpuhan. Vaksin polio biasanya diberikan dalam rangkaian empat dosis. Dosis pertama diberikan segera setelah lahir, biasanya antara usia 1 dan 2 bulan, diikuti dengan dosis kedua pada usia 4 bulan, dosis ketiga antara usia 6 dan 18 bulan, dan dosis penguat terakhir antara usia 4 dan 6 tahun. Jadwal vaksinasi ini memastikan kekebalan jangka panjang terhadap polio, dan umumnya tidak diperlukan dosis penguat bagi mereka yang telah menyelesaikan rangkaian vaksinasi. Vaksin ini aman dan efektif, serta berperan penting dalam mencegah penyebaran polio dan menjaga kesehatan masyarakat."
+                    android:justificationMode="inter_word"
                     android:textSize="16sp"
-                    android:padding="10dp"/>
+                    android:paddingVertical="10dp"/>
             </ScrollView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Vaccine List"
-                android:textSize="22sp"
-                android:fontFamily="@font/poppins_bold"/>
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="10dp"/>
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="340dp">
+                android:layout_height="250dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:paddingStart="15dp"
-                    android:paddingBottom="20dp"
-                    android:paddingEnd="15dp">
+                    android:paddingBottom="20dp">
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/bukit"
             android:alpha="0.5"
-            android:elevation="1dp"
+            android:elevation="10dp"
             android:layout_marginBottom="-100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,0 +1,70 @@
+package com.example.growdiary.vaccine
+
+import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.example.growdiary.R
+import com.example.growdiary.roadmap.RoadmapProgressListener
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class Vaccine6_10YearsFragment : Fragment(){
+
+    private var progressListener: RoadmapProgressListener? = null
+    private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf() // Map: ImageViewId -> isCompleted (has custom image)
+    private val TOTAL_MILESTONES_3_5_YEARS = 15 // Sesuaikan dengan jumlah total card di roadmap 0-6 bulan Anda
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Dapatkan referensi ke listener dari parentFragment
+        if (parentFragment is RoadmapProgressListener) {
+            progressListener = parentFragment as RoadmapProgressListener
+        } else if (context is RoadmapProgressListener) {
+            // Jika Fragment ini di-host langsung oleh Activity
+            progressListener = context as RoadmapProgressListener
+        } else {
+            // Handle jika listener tidak ditemukan (misal, tidak diimplementasikan)
+            // throw RuntimeException("$context must implement RoadmapProgressListener")
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        progressListener = null // Kosongkan listener saat fragment dilepas
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_vaccine_ranges, container, false)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        val vaccineHistoryRecyclerView = view.findViewById<RecyclerView>(R.id.vaccineHistoryRecyclerView)
+
+        val vaccineList: MutableList<Vaccine> = ArrayList();
+        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_1, false))
+        vaccineList.add(Vaccine("Bacillus Calmette–Guérin", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_2, false))
+        vaccineList.add(Vaccine("Hepatitis B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_3, false))
+        vaccineList.add(Vaccine("DPT", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_4, false))
+        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_5, false))
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        vaccineHistoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        vaccineHistoryRecyclerView.setHasFixedSize(true)
+        val adapter = VaccineToDoAdapter(vaccineList)
+        val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList) { position ->
+            if (position == 0) {
+                findNavController().navigate(R.id.vaccineDetailFragment)
+            }
+        }
+
+        recyclerView.adapter = adapter
+        vaccineHistoryRecyclerView.adapter = vaccineHistoryAdapter
+
+        return view
+    }
+}
