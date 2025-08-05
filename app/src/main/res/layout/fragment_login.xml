@@ -78,7 +78,7 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="525dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_white_top"
         android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="1dp">
@@ -135,7 +135,7 @@
             android:inputType="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_marginTop="17dp"
-            android:drawableStart="@drawable/ic_email"
+            android:drawableStart="@drawable/ic_entry_mail"
             android:drawablePadding="10dp"
             android:background="@drawable/entry_input_fields"/>
 
@@ -150,7 +150,7 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/email_field"
             app:layout_constraintStart_toStartOf="@+id/email_field"
-            android:drawableStart="@drawable/ic_lock_2"
+            android:drawableStart="@drawable/ic_entry_lock"
             android:drawablePadding="10dp"
             android:background="@drawable/entry_input_fields"/>
 

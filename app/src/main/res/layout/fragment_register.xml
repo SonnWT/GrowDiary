@@ -52,7 +52,7 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="670dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_white_top"
         android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -93,7 +93,7 @@
                 android:fontFamily="@font/poppins_light"
                 android:textSize="16sp"
                 android:hint="Username"
-                android:drawableLeft="@drawable/ic_user"
+                android:drawableLeft="@drawable/ic_entry_profile"
                 android:drawablePadding="10dp"
                 android:background="@drawable/entry_input_fields"/>
 
@@ -104,7 +104,7 @@
                 android:textSize="16sp"
                 android:hint="Email"
                 android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableLeft="@drawable/ic_entry_mail"
                 android:drawablePadding="10dp"
                 android:background="@drawable/entry_input_fields"/>
 
@@ -116,7 +116,7 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/ic_lock_2"
+                android:drawableLeft="@drawable/ic_entry_lock"
                 android:drawablePadding="10dp"
                 android:background="@drawable/entry_input_fields"/>
 
@@ -127,7 +127,7 @@
                 android:textSize="16sp"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_lock_2"
+                android:drawableLeft="@drawable/ic_entry_lock"
                 android:drawablePadding="10dp"
                 android:background="@drawable/entry_input_fields"
                 android:layout_marginTop="20dp"/>
