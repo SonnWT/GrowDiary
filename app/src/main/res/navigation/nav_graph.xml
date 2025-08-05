@@ -143,7 +143,7 @@
 
     <fragment
         android:id="@+id/vaccineFragment"
-        android:name="com.example.growdiary.vaccine.VaccineFragment"
+        android:name="com.example.growdiary.vaccine.Vaccine0_6Fragment"
         android:label="Vaccine" />
 
     <fragment

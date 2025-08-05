@@ -9,14 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
-import com.example.growdiary.diary.DiaryFragment
-import com.example.growdiary.home.HomeFragment
-import com.example.growdiary.profile.ProfileFragment // Jika ini adalah Profile utama Anda
-import com.example.growdiary.roadmap.RoadmapFragment
-import com.example.growdiary.vaccine.VaccineFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.example.growdiary.firstkid.FirstKidFragment // Penting: import FirstKidFragment
 
 class MainActivity : AppCompatActivity() {
 
