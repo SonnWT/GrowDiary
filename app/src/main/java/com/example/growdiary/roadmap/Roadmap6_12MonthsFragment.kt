@@ -14,16 +14,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.cardview.widget.CardView // Pastikan CardView diimpor
+import androidx.cardview.widget.CardView
 import androidx.viewpager2.widget.ViewPager2
-import android.content.Context // Import Context untuk onAttach
+import android.content.Context
 import com.example.growdiary.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Roadmap6_12MonthsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Roadmap6_12MonthsFragment : Fragment() {
     private lateinit var carouselAdapter: MilestoneCarouselAdapter
     private val carouselItems = mutableListOf<CarouselItem>()
@@ -32,8 +27,8 @@ class Roadmap6_12MonthsFragment : Fragment() {
 
     // Untuk melacak progres:
     private var progressListener: RoadmapProgressListener? = null
-    private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf() // Map: ImageViewId -> isCompleted (has custom image)
-    private val TOTAL_MILESTONES_6_12_MONTHS = 16 // SESUAIKAN dengan jumlah total card di roadmap 6-12 bulan Anda (dari item 3 sampai 18)
+    private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf()
+    private val TOTAL_MILESTONES_6_12_MONTHS = 16
 
     // 1. Enum untuk menentukan perilaku penambahan gambar
     private enum class AddBehavior { AT_START, AT_END }
@@ -74,11 +69,8 @@ class Roadmap6_12MonthsFragment : Fragment() {
         if (parentFragment is RoadmapProgressListener) {
             progressListener = parentFragment as RoadmapProgressListener
         } else if (context is RoadmapProgressListener) {
-            // Jika Fragment ini di-host langsung oleh Activity
             progressListener = context as RoadmapProgressListener
         } else {
-            // Handle jika listener tidak ditemukan (misal, tidak diimplementasikan)
-            // throw RuntimeException("$context must implement RoadmapProgressListener")
         }
     }
 
@@ -98,9 +90,6 @@ class Roadmap6_12MonthsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi status milestone untuk setiap card di roadmap 6-12 bulan
-        // Penting: Pastikan semua ID ImageView ini ada di layout fragment_roadmap6_12_months.xml Anda
-        // Perbaikan: Menggunakan ID tanpa underscore agar sesuai dengan XML Anda
         milestoneStatus[R.id.image_item3] = false
         milestoneStatus[R.id.image_item4] = false
         milestoneStatus[R.id.image_item5] = false
@@ -112,12 +101,11 @@ class Roadmap6_12MonthsFragment : Fragment() {
         milestoneStatus[R.id.image_item11] = false
         milestoneStatus[R.id.image_item12] = false
 
-
         // Menggunakan fungsi bantu untuk menyiapkan setiap CardView
         setupCardView(
             view = view,
             cardId = R.id.card_item_3,
-            thumbnailImageViewId = R.id.image_item3, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item3,
             dialogTitle = "Memanggil\nMama Papa",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_sitting),
@@ -131,7 +119,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_4,
-            thumbnailImageViewId = R.id.image_item4, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item4,
             dialogTitle = "Menunjuk untuk\nMeminta sesuatu",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_sitting),
@@ -144,7 +132,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_5,
-            thumbnailImageViewId = R.id.image_item5, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item5,
             dialogTitle = "Melambaikan Tangan\n(Bye - Bye)",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_smile),
@@ -157,7 +145,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_6,
-            thumbnailImageViewId = R.id.image_item6, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item6,
             dialogTitle = "Berdiri Sendiri\nTanpa Dibantu",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_terlentang),
@@ -170,7 +158,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_7,
-            thumbnailImageViewId = R.id.image_item7, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item7,
             dialogTitle = "Berdiri Dipegang",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_smile),
@@ -183,7 +171,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_8,
-            thumbnailImageViewId = R.id.image_item8, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item8,
             dialogTitle = "Mengucapkan Suku\nKata Bersambung",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_sitting),
@@ -196,7 +184,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_9,
-            thumbnailImageViewId = R.id.image_item9, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item9,
             dialogTitle = "Memegang 2 Mainan\ndengan Tangan\nKanan-Kiri",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_hold_toy),
@@ -209,7 +197,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_10,
-            thumbnailImageViewId = R.id.image_item10, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item10,
             dialogTitle = "Mengucapkan Satu Suku\n Kata: Ba, Pa, Ma",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_see_hand),
@@ -222,7 +210,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_11,
-            thumbnailImageViewId = R.id.image_item11, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item11,
             dialogTitle = "Mencari Benda Jatuh/Disembunyikan",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_see_hand),
@@ -235,7 +223,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
         setupCardView(
             view = view,
             cardId = R.id.card_item_12,
-            thumbnailImageViewId = R.id.image_item12, // Perbaikan: ID sesuai XML (tanpa underscore)
+            thumbnailImageViewId = R.id.image_item12,
             dialogTitle = "Duduk Tanpa Dipegang",
             initialCarouselItems = listOf(
                 CarouselItem.ImageResource(R.drawable.baby_see_hand),
@@ -245,8 +233,6 @@ class Roadmap6_12MonthsFragment : Fragment() {
             addBehavior = AddBehavior.AT_END
         )
 
-
-        // Setelah semua card diinisialisasi, update progres awal
         updateOverallProgress()
     }
 
@@ -268,7 +254,6 @@ class Roadmap6_12MonthsFragment : Fragment() {
                 title = dialogTitle,
                 initialItems = initialCarouselItems,
                 targetImageViewId = thumbnailImageViewId,
-                // Tidak ada lagi targetDeleteButtonId di sini
                 addBehavior = addBehavior // Teruskan addBehavior
             )
         }
@@ -280,11 +265,8 @@ class Roadmap6_12MonthsFragment : Fragment() {
         } else {
             milestoneStatus[thumbnailImageViewId] = false
         }
-        // Tidak ada lagi logika untuk tombol delete di tampilan utama di sini
     }
 
-
-    // Fungsi showCarouselPopupDialog sekarang tanpa targetDeleteButtonId
     private fun showCarouselPopupDialog(title: String, initialItems: List<CarouselItem>, targetImageViewId: Int, addBehavior: AddBehavior) {
         carouselItems.clear()
         carouselItems.addAll(initialItems)
@@ -308,12 +290,9 @@ class Roadmap6_12MonthsFragment : Fragment() {
             currentAddBehavior = addBehavior
             pickImageLauncher.launch("image/*")
         }
-        // PENTING: Atur callback onItemRemoved di sini!
         carouselAdapter.onItemRemoved = { realPosition ->
             // Ketika item dihapus dari carousel, perbarui indikator titik
             setupDotsIndicator()
-            // Logika untuk menghapus gambar thumbnail utama jika carousel menjadi kosong
-            // setelah penghapusan gambar dari carousel popup
             if (carouselAdapter.getRealItemCount() == 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) {
                 val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
                 targetImageView?.setImageDrawable(null) // Hapus gambar thumbnail utama
@@ -331,7 +310,7 @@ class Roadmap6_12MonthsFragment : Fragment() {
 
             val currentPosition = viewPager.currentItem
             val realPosition = currentPosition % carouselAdapter.getRealItemCount()
-            val selectedItem = carouselItems[realPosition] // Menggunakan carouselItems karena realPosition merujuk ke indeks di sini
+            val selectedItem = carouselItems[realPosition]
 
             val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
 

@@ -67,14 +67,11 @@ class ProfileDetailFragment2 : Fragment() {
                 textNotes.text = child.notes
 
                 if (child.imageResId != null) {
-                    // Opsi 1: Jika ada ID dari drawable, gunakan ini.
                     profileImage.setImageResource(child.imageResId!!)
                 } else if (child.imageUri != null) {
-                    // Opsi 2: Jika ada URI dari galeri/kamera, gunakan ini.
                     profileImage.setImageURI(Uri.parse(child.imageUri))
                 } else {
-                    // Opsi 3: Jika tidak ada keduanya, tampilkan gambar default.
-                    profileImage.setImageResource(R.drawable.baby_icon) // Ganti dengan gambar default Anda
+                    profileImage.setImageResource(R.drawable.baby_icon)
                 }
             }
         }

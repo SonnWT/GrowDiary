@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // --- Inisialisasi Tombol & Indikator ---
         val navHome: LinearLayout = findViewById(R.id.nav_home)
         val navVaccine: LinearLayout = findViewById(R.id.nav_vaccine)
         val navDiary: LinearLayout = findViewById(R.id.nav_diary)
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
                     bottomNav.visibility = View.VISIBLE
                     fabRoadmap.visibility = View.VISIBLE
                     tulisanRoadMap.visibility = View.VISIBLE
-                    // Set indikator aktif saat kembali ke fragmen navigasi utama
                     when (destination.id) {
                         R.id.homeFragment -> setActiveIndicator(indicatorHome)
                         R.id.vaccineFragment -> setActiveIndicator(indicatorVaccine)
@@ -94,13 +92,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         navProfile.setOnClickListener {
-            navController.navigate(R.id.profileFragment) // Pastikan ini adalah ID fragment profile yang ingin ditampilkan oleh bottom nav
+            navController.navigate(R.id.profileFragment)
         }
-
-        // Tidak perlu `if (savedInstanceState == null)` di sini
-        // karena `app:startDestination` di `nav_graph.xml` sudah menangani navigasi awal.
-        // Jika Anda ingin mengontrol indikator awal (yang seharusnya disembunyikan untuk FirstKidFragment),
-        // itu sudah diatur di addOnDestinationChangedListener.
     }
 
     private fun resetIndicators() {

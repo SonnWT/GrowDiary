@@ -54,7 +54,7 @@ class ProfileDetailFragment : Fragment() {
         textWeight.text = "20 kg"
         textHeight.text = "78 cm"
         textNotes.text = "Joseph alergi susu sapi dan kacang tanah. Joseph juga tidak bisa tidur jika tidak dibacakan dongeng."
-        profileImage.setImageResource(R.drawable.profile_joseph) // Assuming you have profile_joseph drawable
+        profileImage.setImageResource(R.drawable.profile_joseph)
 
         btnEditProfile.setOnClickListener {
             // Navigate to EditProfileFragment

@@ -4,11 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.growdiary.R
-import com.example.growdiary.profile.Child // Pastikan import data class Child sudah benar
-import java.time.LocalDate
-import java.time.Period
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 data class UserProfile(
     val username: String,
@@ -29,10 +24,10 @@ class ProfileViewModel : ViewModel() {
         _children.value = mutableListOf(
             Child(
                 name = "Joseph",
-                birthDate = "1 Mei 2024",
+                birthDate = "1 May 2024",
                 imageUri = null, // Biarkan null
-                imageResId = R.drawable.baby_icon, // <-- GANTI DENGAN NAMA FILE ANDA
-                gender = "Laki-laki",
+                imageResId = R.drawable.baby_icon,
+                gender = "Male",
                 weight = "10",
                 height = "75",
                 notes = "Alergi debu."

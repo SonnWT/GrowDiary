@@ -16,7 +16,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.viewpager2.widget.ViewPager2
-import android.content.Context // Import Context untuk onAttach
+import android.content.Context
 import com.example.growdiary.R
 
 class Roadmap0_6MonthsFragment : Fragment() {
@@ -29,7 +29,7 @@ class Roadmap0_6MonthsFragment : Fragment() {
     // Untuk melacak progres:
     private var progressListener: RoadmapProgressListener? = null
     private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf() // Map: ImageViewId -> isCompleted (has custom image)
-    private val TOTAL_MILESTONES_0_6_MONTHS = 18 // Sesuaikan dengan jumlah total card di roadmap 0-6 bulan Anda
+    private val TOTAL_MILESTONES_0_6_MONTHS = 18
 
     // 1. Enum untuk menentukan perilaku penambahan gambar
     private enum class AddBehavior { AT_START, AT_END }
@@ -47,17 +47,14 @@ class Roadmap0_6MonthsFragment : Fragment() {
 
             setupDotsIndicator() // Buat ulang dot
 
-            // Logika cerdas untuk pindah ke gambar yang baru ditambahkan
             val realCount = carouselAdapter.getRealItemCount()
             val targetRealPosition = if (addAtStart) {
-                0 // Jika ditambah di awal, tujuannya index 0
+                0
             } else {
-                // Gunakan coerceAtLeast(0) karena mungkin hanya ada tombol tambah
                 (realCount - 2).coerceAtLeast(0)
             }
 
             val currentMiddle = viewPager.currentItem
-            // Gunakan realCount.coerceAtLeast(1) untuk menghindari pembagian dengan nol
             val offsetToCenter = currentMiddle % realCount.coerceAtLeast(1)
             val targetPosition = currentMiddle - offsetToCenter + targetRealPosition
             viewPager.setCurrentItem(targetPosition, false)
@@ -73,8 +70,7 @@ class Roadmap0_6MonthsFragment : Fragment() {
             // Jika Fragment ini di-host langsung oleh Activity
             progressListener = context as RoadmapProgressListener
         } else {
-            // Handle jika listener tidak ditemukan (misal, tidak diimplementasikan)
-            // throw RuntimeException("$context must implement RoadmapProgressListener")
+
         }
     }
 
@@ -93,8 +89,6 @@ class Roadmap0_6MonthsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi status milestone untuk setiap card di roadmap 0-6 bulan
-        // Penting: Pastikan semua ID ImageView ini ada di layout fragment_roadmap_0_6_bulan.xml Anda
         milestoneStatus[R.id.image_item_1] = false
         milestoneStatus[R.id.image_item_2] = false
         milestoneStatus[R.id.image_item_3] = false
@@ -348,12 +342,10 @@ class Roadmap0_6MonthsFragment : Fragment() {
             addBehavior = AddBehavior.AT_END
         )
 
-
         // Setelah semua card diinisialisasi, update progres awal
         updateOverallProgress()
     }
 
-    // Fungsi bantu yang diperbarui tanpa parameter deleteButtonId
     private fun setupCardView(
         view: View,
         cardId: Int,
@@ -409,12 +401,9 @@ class Roadmap0_6MonthsFragment : Fragment() {
             currentAddBehavior = addBehavior
             pickImageLauncher.launch("image/*")
         }
-        // PENTING: Atur callback onItemRemoved di sini!
         carouselAdapter.onItemRemoved = { realPosition ->
             // Ketika item dihapus dari carousel, perbarui indikator titik
             setupDotsIndicator()
-            // Logika untuk menghapus gambar thumbnail utama jika carousel menjadi kosong
-            // setelah penghapusan gambar dari carousel popup
             if (carouselAdapter.getRealItemCount() == 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) {
                 val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
                 targetImageView?.setImageDrawable(null) // Hapus gambar thumbnail utama
@@ -509,7 +498,6 @@ class Roadmap0_6MonthsFragment : Fragment() {
         }
     }
 
-    // Fungsi untuk memperbarui progres keseluruhan dan melaporkannya ke parent
     private fun updateOverallProgress() {
         val completedCount = milestoneStatus.count { it.value } // Hitung yang statusnya true
         val totalCount = milestoneStatus.size // Total milestone adalah ukuran map

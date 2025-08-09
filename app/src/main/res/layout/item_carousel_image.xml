@@ -8,9 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:background="@android:color/darker_gray" /> <!-- Placeholder sementara -->
+        android:background="@android:color/darker_gray" />
 
-    <!-- Tombol silang untuk menghapus gambar dari carousel -->
     <ImageView
         android:id="@+id/carousel_delete_button"
         android:layout_width="30dp"
@@ -19,6 +18,6 @@
     android:layout_gravity="top|start"
     android:layout_margin="5dp"
     android:elevation="4dp"
-    android:visibility="gone" /> <!-- Awalnya tersembunyi -->
+    android:visibility="gone" />
 
 </FrameLayout>

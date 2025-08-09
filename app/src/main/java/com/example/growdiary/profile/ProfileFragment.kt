@@ -18,8 +18,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.growdiary.R
 import com.example.growdiary.databinding.FragmentProfileBinding
-import com.example.growdiary.loginregister.LoginFragment
-import com.example.growdiary.profile.UserProfile
 
 class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
 
@@ -49,7 +47,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
                     name = newName,
                     birthDate = newBirthDate,
                     imageUri = newImageUri,
-                    imageResId = null, // <-- INI KUNCINYA: Beri nilai null untuk ID drawable
+                    imageResId = null,
                     gender = newGender,
                     weight = newWeight,
                     height = newHeight,
@@ -60,7 +58,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         }
     }
 
-    // Launcher untuk menerima data setelah mengedit profil utama (HANYA SATU)
+    // Launcher untuk menerima data setelah mengedit profil utama
     private val editProfileLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -96,7 +94,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
 
         // Amati data profil pengguna utama
         viewModel.userProfile.observe(viewLifecycleOwner) { profile ->
-            // 1. Set username dan email dari data ViewModel (bukan hardcode)
+            // 1. Set username dan email dari data ViewModel
             binding.tvUsername.text = "Fikri ganteng"
             binding.tvEmail.text = "fikrilovebaylee@gmail.com"
 
@@ -106,7 +104,6 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
                 binding.ivAvatar.setImageURI(Uri.parse(profile.avatarUri))
             } else {
                 // Jika tidak ada, gunakan gambar default dari drawable
-                // Ganti 'placeholder_avatar' dengan nama file gambar default Anda
                 binding.ivAvatar.setImageResource(R.drawable.fikri)
             }
         }
@@ -144,7 +141,6 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         val bundle = Bundle().apply {
             putInt("childPosition", position)
         }
-        // ✅ GUNAKAN ACTION MILIK ProfileFragment
         findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment2, bundle)
     }
 

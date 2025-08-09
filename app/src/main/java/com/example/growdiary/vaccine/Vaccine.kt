@@ -6,5 +6,5 @@ data class Vaccine(
     val vaccinePriority: String,
     val vaccineDate: String,
     val vaccineImage: Int?,
-    var vaccineChecked: Boolean = false // this is essential
+    var vaccineChecked: Boolean = false
 )

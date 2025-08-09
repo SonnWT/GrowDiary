@@ -47,7 +47,6 @@ class EditProfileFragment2 : Fragment() {
         uri?.let {
             newImageUri = it
             profileImage.setImageURI(it)
-            // Tambahkan ini untuk memastikan persistensi URI di seluruh konfigurasi perubahan
             it.let { uri ->
                 requireContext().contentResolver.takePersistableUriPermission(
                     uri,
@@ -114,7 +113,7 @@ class EditProfileFragment2 : Fragment() {
                 profileImage.setImageURI(Uri.parse(childToEdit.imageUri))
             } else {
                 // Opsi 3: Jika tidak ada keduanya, tampilkan gambar default.
-                profileImage.setImageResource(R.drawable.baby_icon) // Ganti dengan gambar default Anda
+                profileImage.setImageResource(R.drawable.baby_icon)
             }
 
         } else {

@@ -6,18 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.growdiary.R
-import com.example.growdiary.vaccine.VaccineProgressListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Vaccine0_6MonthsFragment : Fragment(){
 
     private var progressListener: VaccineProgressListener? = null
-    private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf() // Map: ImageViewId -> isCompleted (has custom image)
-    private val TOTAL_MILESTONES_0_6_MONTHS = 18 // Sesuaikan dengan jumlah total card di roadmap 0-6 bulan Anda
+    private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf()
+    private val TOTAL_MILESTONES_0_6_MONTHS = 18
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -28,8 +25,6 @@ class Vaccine0_6MonthsFragment : Fragment(){
             // Jika Fragment ini di-host langsung oleh Activity
             progressListener = context as VaccineProgressListener
         } else {
-            // Handle jika listener tidak ditemukan (misal, tidak diimplementasikan)
-            // throw RuntimeException("$context must implement RoadmapProgressListener")
         }
     }
 

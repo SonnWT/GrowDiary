@@ -10,7 +10,6 @@ import com.example.growdiary.R
 class VaccineHistoryAdapter (private val vaccineList: List<Vaccine>, private val onItemClicked: (Int) -> Unit) :
     RecyclerView.Adapter<VaccineHistoryAdapter.MyViewHolder>() {
 
-//    var onItemClick : ((VaccineDetail) -> Unit)? = null
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val vaccineHistoryName: TextView = itemView.findViewById(R.id.vaccineHistoryName)
         val vaccineHistoryImage: ImageView = itemView.findViewById(R.id.vaccineHistoryImage)

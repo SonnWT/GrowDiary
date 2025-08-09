@@ -16,27 +16,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.growdiary.R
 import com.example.growdiary.roadmap.Roadmap0_6MonthsFragment
-import com.example.growdiary.roadmap.Roadmap1_2YearsFragment
-import com.example.growdiary.roadmap.Roadmap6_12MonthsFragment
 
 interface VaccineProgressListener {
     fun onProgressUpdated(completedMilestones: Int, totalMilestones: Int)
 }
-/**
- * A simple [Fragment] subclass.
- * Use the [Vaccine0_6Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
-    // TODO: Rename and change types of parameters
     private lateinit var spinner : Spinner;
     private lateinit var adapter : ArrayAdapter<String>;
     private val items = arrayOf(
-        "0 - 6 Bulan",
-        "7 - 12 Bulan",
-        "1 - 2 Tahun",
-        "3 - 5 Tahun",
-        "6 - 10 Tahun"
+        "0 - 6 Months",
+        "7 - 12 Months",
+        "1 - 2 Years",
+        "3 - 5 Years",
+        "6 - 10 Years"
     )
     private lateinit var progressTextView: TextView // Deklarasikan TextView untuk progres
 
@@ -78,12 +71,11 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
 
         spinner.adapter = adapter
 
-        // Atur listener
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 loadVaccineFragment(position)
             }
-            override fun onNothingSelected(parent: AdapterView<*>) { /* Do nothing */ }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
         val vaccineList: MutableList<Vaccine> = ArrayList();
@@ -113,10 +105,8 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
         val spinnerPosition = adapter.getPosition(defaultSelection)
         if (spinnerPosition >= 0) {
             spinner.setSelection(spinnerPosition)
-            // Muat Fragment roadmap default saat fragment utama dibuat
             loadVaccineFragment(spinnerPosition)
         }
-        // Inisialisasi progres awal (bisa 0/0 atau nilai default lainnya)
         onProgressUpdated(0, 0)
     }
 
@@ -128,7 +118,7 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
             2 -> Vaccine1_2YearssFragment()
             3 -> Vaccine3_5YearsFragment()
             4 -> Vaccine6_10YearsFragment()
-            else -> Roadmap0_6MonthsFragment() // Fallback
+            else -> Roadmap0_6MonthsFragment()
         }
         fragmentTransaction.replace(R.id.vaccine_fragment_container, newFragment)
         fragmentTransaction.commit()

@@ -14,7 +14,6 @@ import java.util.Calendar
 
 class AddChildActivity : AppCompatActivity() {
 
-    // Gunakan View Binding, tidak perlu deklarasi manual
     private lateinit var binding: ActivityAddChildBinding
     private var selectedImageUri: Uri? = null
 
@@ -34,7 +33,6 @@ class AddChildActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // PERBAIKAN: Panggil nama fungsi yang benar
         setupDateDropdowns()
         setupGenderDropdown()
 
@@ -49,7 +47,6 @@ class AddChildActivity : AppCompatActivity() {
         }
     }
 
-    // PERBAIKAN: Fungsi ini perlu ditambahkan
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
@@ -57,8 +54,6 @@ class AddChildActivity : AppCompatActivity() {
 
     private fun saveChildData() {
         val name = binding.etChildName.text.toString()
-
-        // PERBAIKAN: Ambil data dari ID yang benar di XML
         val day = binding.autocompleteDay.text.toString()
         val month = binding.autocompleteMonth.text.toString()
         val year = binding.autocompleteYear.text.toString()
@@ -92,7 +87,6 @@ class AddChildActivity : AppCompatActivity() {
             binding.tilChildName.error = "Nama tidak boleh kosong"
             return false
         }
-        // PERBAIKAN: Ambil data dari ID yang benar
         val selectedGender = binding.autocompleteGender.text.toString()
         if (selectedGender.isEmpty()) {
             Toast.makeText(this, "Harap pilih gender", Toast.LENGTH_SHORT).show()
@@ -110,13 +104,12 @@ class AddChildActivity : AppCompatActivity() {
     }
 
     private fun setupDateDropdowns() {
-        // PERBAIKAN: ArrayAdapter butuh 'this' (Context), bukan 'requireContext' di Activity
         val days = (1..31).map { it.toString() }
         val dayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, days)
         binding.autocompleteDay.setAdapter(dayAdapter)
 
-        val months = listOf("Januari", "Februari", "Maret", "April", "Mei", "Juni",
-            "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+        val months = listOf("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December")
         val monthAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, months)
         binding.autocompleteMonth.setAdapter(monthAdapter)
 
@@ -127,7 +120,7 @@ class AddChildActivity : AppCompatActivity() {
     }
 
     private fun setupGenderDropdown() {
-        val genders = listOf("Laki-laki", "Perempuan")
+        val genders = listOf("Male", "Female")
         val genderAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genders)
         binding.autocompleteGender.setAdapter(genderAdapter)
     }

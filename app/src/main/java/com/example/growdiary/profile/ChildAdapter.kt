@@ -18,7 +18,6 @@ import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-// Data class sudah benar
 data class Child(
     val name: String,
     val birthDate: String,
@@ -27,11 +26,10 @@ data class Child(
     val gender: String,
     val weight: String,
     val height: String,
-    val notes: String? = null // <-- TAMBAHKAN PROPERTI INI JIKA BELUM ADA
+    val notes: String? = null
 )
 
 class ChildAdapter(
-    // Hapus 'children' dari constructor, hanya sisakan listener
     private val listener: OnChildItemClickListener
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
@@ -68,7 +66,6 @@ class ChildAdapter(
         return ChildViewHolder(view)
     }
 
-    // BENAR (Selalu menggunakan posisi yang terbaru)
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
         val child = children[position]
@@ -90,12 +87,12 @@ class ChildAdapter(
             holder.childPhoto.setImageURI(Uri.parse(child.imageUri))
         } else {
             // Jika tidak ada keduanya, gunakan gambar placeholder
-            holder.childPhoto.setImageResource(R.drawable.baby_icon) // Ganti dengan placeholder Anda
+            holder.childPhoto.setImageResource(R.drawable.baby_icon)
         }
 
         // Hitung dan set umur
         try {
-            val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale("id", "ID"))
+            val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale("en", "US"))
             val birthDate = LocalDate.parse(child.birthDate, formatter)
             val currentDate = LocalDate.now()
             val period = Period.between(birthDate, currentDate)

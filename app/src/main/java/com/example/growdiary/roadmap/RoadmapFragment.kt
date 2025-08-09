@@ -11,30 +11,25 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.growdiary.R
-// Import Fragment-fragment roadmap lainnya setelah Anda membuatnya
-// import com.example.growdiary.roadmap.fragments.Roadmap7_12MonthsFragment
-// import com.example.growdiary.roadmap.fragments.Roadmap1_2YearsFragment
-// dst.
 
 // Interface untuk komunikasi dari child fragment ke parent fragment
 interface RoadmapProgressListener {
     fun onProgressUpdated(completedMilestones: Int, totalMilestones: Int)
 }
 
-// RoadmapFragment sekarang mengimplementasikan RoadmapProgressListener
 class RoadmapFragment : Fragment(), RoadmapProgressListener {
 
     private lateinit var spinner: Spinner
     private lateinit var adapter: ArrayAdapter<String>
     private val items = arrayOf(
-        "0 - 6 Bulan",
-        "7 - 12 Bulan",
-        "1 - 2 Tahun",
-        "3 - 5 Tahun",
-        "6 - 10 Tahun"
+        "0 - 6 Months",
+        "7 - 12 Months",
+        "1 - 2 Years",
+        "3 - 5 Years",
+        "6 - 10 Years"
     )
 
-    private lateinit var progressTextView: TextView // Deklarasikan TextView untuk progres
+    private lateinit var progressTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +72,7 @@ class RoadmapFragment : Fragment(), RoadmapProgressListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 loadRoadmapFragment(position)
             }
-            override fun onNothingSelected(parent: AdapterView<*>) { /* Do nothing */ }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
         return view
     }
@@ -101,10 +96,8 @@ class RoadmapFragment : Fragment(), RoadmapProgressListener {
         val spinnerPosition = adapter.getPosition(defaultSelection)
         if (spinnerPosition >= 0) {
             spinner.setSelection(spinnerPosition)
-            // Muat Fragment roadmap default saat fragment utama dibuat
             loadRoadmapFragment(spinnerPosition)
         }
-        // Inisialisasi progres awal (bisa 0/0 atau nilai default lainnya)
         onProgressUpdated(0, 0)
     }
 
@@ -113,25 +106,18 @@ class RoadmapFragment : Fragment(), RoadmapProgressListener {
         val newFragment: Fragment = when (position) {
             0 -> Roadmap0_6MonthsFragment()
             1 -> {
-                // TODO: Buat dan muat Roadmap7_12MonthsFragment()
-                // Untuk saat ini, kita bisa fallback atau tampilkan placeholder
-                // Penting: Jika Anda membuat Roadmap7_12MonthsFragment, pastikan ia juga
-                // mengimplementasikan logika pelacakan progres dan memanggil onProgressUpdated
-                Roadmap6_12MonthsFragment() // Sementara gunakan Roadmap6_12MonthsFragment
+                Roadmap6_12MonthsFragment()
             }
             2 -> {
-                // TODO: Buat dan muat Roadmap1_2YearsFragment()
-                Roadmap1_2YearsFragment() // Sementara
+                Roadmap1_2YearsFragment()
             }
             3 -> {
-                // TODO: Buat dan muat Roadmap3_5YearsFragment()
-                Roadmap0_6MonthsFragment() // Sementara
+                Roadmap0_6MonthsFragment()
             }
             4 -> {
-                // TODO: Buat dan muat Roadmap6_10YearsFragment()
-                Roadmap0_6MonthsFragment() // Sementara
+                Roadmap0_6MonthsFragment()
             }
-            else -> Roadmap0_6MonthsFragment() // Fallback
+            else -> Roadmap0_6MonthsFragment()
         }
         fragmentTransaction.replace(R.id.roadmap_fragment_container, newFragment)
         fragmentTransaction.commit()

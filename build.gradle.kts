@@ -5,8 +5,6 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        // Ini adalah classpath untuk plugin Gradle Navigation Safe Args itu sendiri
-        // Versi harus sesuai dengan versi Navigation Component yang Anda gunakan
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
     }
 }

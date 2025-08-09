@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView // Perubahan: Import AutoCompleteTextView
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,10 +26,10 @@ class EditProfileFragment : Fragment() {
     private lateinit var profileImage: ShapeableImageView
     private lateinit var textName: TextView
     private lateinit var btnEditName: ImageView
-    private lateinit var autocompleteDay: AutoCompleteTextView // Perubahan: AutoCompleteTextView
-    private lateinit var autocompleteMonth: AutoCompleteTextView // Perubahan: AutoCompleteTextView
-    private lateinit var autocompleteYear: AutoCompleteTextView // Perubahan: AutoCompleteTextView
-    private lateinit var autocompleteGender: AutoCompleteTextView // Perubahan: AutoCompleteTextView
+    private lateinit var autocompleteDay: AutoCompleteTextView
+    private lateinit var autocompleteMonth: AutoCompleteTextView
+    private lateinit var autocompleteYear: AutoCompleteTextView
+    private lateinit var autocompleteGender: AutoCompleteTextView
     private lateinit var editWeight: EditText
     private lateinit var editHeight: EditText
     private lateinit var editNotes: EditText
@@ -43,7 +43,6 @@ class EditProfileFragment : Fragment() {
         uri?.let {
             newImageUri = it
             profileImage.setImageURI(it)
-            // Tambahkan ini untuk memastikan persistensi URI di seluruh konfigurasi perubahan
             it.let { uri ->
                 requireContext().contentResolver.takePersistableUriPermission(
                     uri,
@@ -64,10 +63,10 @@ class EditProfileFragment : Fragment() {
         textName = view.findViewById(R.id.text_name_edit)
         btnEditName = view.findViewById(R.id.btn_edit_name)
         btnEditPhoto = view.findViewById(R.id.btn_edit_photo)
-        autocompleteDay = view.findViewById(R.id.autocomplete_day) // Perubahan: autocomplete_day
-        autocompleteMonth = view.findViewById(R.id.autocomplete_month) // Perubahan: autocomplete_month
-        autocompleteYear = view.findViewById(R.id.autocomplete_year) // Perubahan: autocomplete_year
-        autocompleteGender = view.findViewById(R.id.autocomplete_gender) // Perubahan: autocomplete_gender
+        autocompleteDay = view.findViewById(R.id.autocomplete_day)
+        autocompleteMonth = view.findViewById(R.id.autocomplete_month)
+        autocompleteYear = view.findViewById(R.id.autocomplete_year)
+        autocompleteGender = view.findViewById(R.id.autocomplete_gender)
         editWeight = view.findViewById(R.id.edit_weight)
         editHeight = view.findViewById(R.id.edit_height)
         editNotes = view.findViewById(R.id.edit_notes)
@@ -106,9 +105,6 @@ class EditProfileFragment : Fragment() {
         }
 
         btnSave.setOnClickListener {
-            // Save logic here (e.g., update data in a ViewModel or database)
-//            Toast.makeText(context, "Profil disimpan!", Toast.LENGTH_SHORT).show()
-            // Navigate back to ProfileDetailFragment
             findNavController().navigate(R.id.action_editProfileFragment_to_profileDetailFragment)
         }
 
@@ -117,15 +113,12 @@ class EditProfileFragment : Fragment() {
         }
     }
 
-    private fun setupDateDropdowns() { // Perubahan nama fungsi
+    private fun setupDateDropdowns() {
         // Day Dropdown
         val days = (1..31).map { it.toString() }
         val dayAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, days)
         autocompleteDay.setAdapter(dayAdapter)
         autocompleteDay.setOnItemClickListener { parent, view, position, id ->
-            // Handle item selection if needed
-            // val selectedDay = parent.getItemAtPosition(position).toString()
-            // Toast.makeText(context, "Selected Day: $selectedDay", Toast.LENGTH_SHORT).show()
         }
 
         // Month Dropdown
@@ -134,7 +127,6 @@ class EditProfileFragment : Fragment() {
         val monthAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, months)
         autocompleteMonth.setAdapter(monthAdapter)
         autocompleteMonth.setOnItemClickListener { parent, view, position, id ->
-            // Handle item selection if needed
         }
 
         // Year Dropdown
@@ -143,11 +135,10 @@ class EditProfileFragment : Fragment() {
         val yearAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, years)
         autocompleteYear.setAdapter(yearAdapter)
         autocompleteYear.setOnItemClickListener { parent, view, position, id ->
-            // Handle item selection if needed
         }
     }
 
-    private fun setupGenderDropdown() { // Perubahan nama fungsi
+    private fun setupGenderDropdown() {
         val genders = listOf("Male", "Female")
         val genderAdapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_dropdown_item, genders)
         autocompleteGender.setAdapter(genderAdapter)

@@ -1,4 +1,3 @@
-// com.example.growdiary.home/DiaryAdapter.kt (atau di package adapter Anda)
 package com.example.growdiary.home
 
 import android.view.LayoutInflater
@@ -6,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView // Penting: Import CardView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.growdiary.R // Pastikan ini benar
+import com.example.growdiary.R
 
 class DiaryAdapter(
     private val diaryList: List<DiaryItem>, // List item yang akan ditampilkan

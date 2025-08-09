@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    tools:context=".profile.EditProfileFragment2">
+    tools:context=".profile.EditProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_bar_container_edit"
@@ -23,7 +24,6 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:padding="12dp"
-            android:layout_marginTop="25dp"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,13 +35,15 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image_edit2"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="102dp"
+            android:layout_height="105dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
             app:srcCompat="@drawable/profile_joseph" />
 
@@ -90,19 +92,17 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fitsSystemWindows="true"
         app:layout_constraintTop_toBottomOf="@id/top_bar_container_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_placeholder_edit"
-        android:fillViewport="true"
-        android:paddingTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_placeholder_edit2"
+        android:paddingTop="0dp"
         android:background="@drawable/rounded_scrollview_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="5dp"
             android:paddingBottom="10dp">
 
             <androidx.cardview.widget.CardView
@@ -118,7 +118,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingHorizontal="16dp"
-                    android:paddingTop="16dp"
                     android:paddingBottom="5dp">
 
                     <TextView
@@ -137,46 +136,46 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="0.95"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             app:boxBackgroundColor="#E9E9E9"
-                            app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="#7A797B"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:hintEnabled="false"
                             app:endIconMode="dropdown_menu"
-                            app:endIconTint="#7A797B"
-                            app:hintEnabled="false">
+                            app:boxStrokeColor="#7A797B"
+                            app:endIconTint="#7A797B">
 
                             <AutoCompleteTextView
                                 android:id="@+id/autocomplete_day2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:dropDownHeight="145dp"
-                                android:ellipsize="end"
-                                android:fontFamily="@font/poppins_regular"
                                 android:inputType="none"
-                                android:maxLines="1"
                                 android:paddingVertical="12dp"
                                 android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:dropDownHeight="145dp"
                                 android:popupBackground="@drawable/dropdown_menu_background"
-                                android:textSize="16sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:singleLine="true"/> </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:layout_weight="1.4"
+                            android:layout_weight="1.25"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             app:boxBackgroundColor="#E9E9E9"
-                            app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="#7A797B"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:hintEnabled="false"
                             app:endIconMode="dropdown_menu"
-                            app:endIconTint="#7A797B"
-                            app:hintEnabled="false">
+                            app:boxStrokeColor="#7A797B"
+                            app:endIconTint="#7A797B">
 
                             <AutoCompleteTextView
                                 android:id="@+id/autocomplete_month2"
@@ -188,40 +187,39 @@
                                 android:inputType="none"
                                 android:maxLines="1"
                                 android:paddingVertical="12dp"
+                                android:popupBackground="@drawable/dropdown_menu_background"
                                 android:singleLine="true"
                                 android:textColor="@color/black"
-                                android:popupBackground="@drawable/dropdown_menu_background"
-                                android:textSize="16sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:textSize="16sp" />    </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_weight="1.2"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             app:boxBackgroundColor="#E9E9E9"
-                            app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="#7A797B"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:hintEnabled="false"
                             app:endIconMode="dropdown_menu"
-                            app:endIconTint="#7A797B"
-                            app:hintEnabled="false">
+                            app:boxStrokeColor="#7A797B"
+                            app:endIconTint="#7A797B">
 
                             <AutoCompleteTextView
                                 android:id="@+id/autocomplete_year2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:dropDownHeight="145dp"
-                                android:ellipsize="end"
-                                android:fontFamily="@font/poppins_regular"
                                 android:inputType="none"
-                                android:maxLines="1"
                                 android:paddingVertical="12dp"
                                 android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:dropDownHeight="145dp"
                                 android:popupBackground="@drawable/dropdown_menu_background"
-                                android:textSize="16sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:singleLine="true"/> </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <TextView
@@ -234,30 +232,29 @@
                         android:textSize="16sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         app:boxBackgroundColor="#E9E9E9"
-                        app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="#7A797B"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:hintEnabled="false"
                         app:endIconMode="dropdown_menu"
-                        app:endIconTint="#7A797B"
-                        app:hintEnabled="false">
+                        app:boxStrokeColor="#7A797B"
+                        app:endIconTint="#7A797B">
 
                         <AutoCompleteTextView
                             android:id="@+id/autocomplete_gender2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:dropDownHeight="100dp"
-                            android:fontFamily="@font/poppins_regular"
                             android:inputType="none"
                             android:paddingVertical="12dp"
                             android:textColor="@color/black"
-                            android:popupBackground="@drawable/dropdown_menu_background"
-                            android:textSize="16sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:dropDownHeight="100dp"
+                            android:popupBackground="@drawable/dropdown_menu_background"/> </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -327,39 +324,40 @@
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_save_profile2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:textColor="@android:color/white"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginEnd="120dp"
+                        app:cornerRadius="24dp"
+                        app:backgroundTint="@color/aqua" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save_profile2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:textSize="18sp"
-                android:fontFamily="@font/roboto_bold"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="120dp"
-                app:cornerRadius="24dp"
-                app:backgroundTint="@color/aqua"/>
-
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
-        android:id="@+id/bottom_navigation_placeholder_edit"
+        android:id="@+id/bottom_navigation_placeholder_edit2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="103dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.growdiary.R
 
-// Sealed Class tidak perlu diubah
 sealed class CarouselItem {
     data class ImageResource(val drawableRes: Int) : CarouselItem()
     data class ImageUri(val uri: Uri) : CarouselItem()
@@ -50,7 +49,7 @@ class MilestoneCarouselAdapter(
                 val view = inflater.inflate(R.layout.item_carousel_image, parent, false)
                 ImageViewHolder(view)
             }
-            else -> { // VIEW_TYPE_ADD
+            else -> {
                 val view = inflater.inflate(R.layout.item_carousel_add, parent, false)
                 AddViewHolder(view)
             }
@@ -66,31 +65,27 @@ class MilestoneCarouselAdapter(
         }
     }
 
-    // --- FUNGSI addImage DIPERBARUI DENGAN PARAMETER ---
     fun addImage(image: CarouselItem, addAtStart: Boolean) {
         if (image is CarouselItem.AddButton) return
 
         if (addAtStart) {
-            // Perilaku untuk card_item_1: Tambahkan di awal
             items.add(0, image)
             notifyItemInserted(0)
         } else {
-            // Perilaku untuk card_item_2: Tambahkan di akhir (sebelum tombol +)
             val addButtonIndex = items.indexOf(CarouselItem.AddButton)
             if (addButtonIndex != -1) {
                 items.add(addButtonIndex, image)
                 notifyItemInserted(addButtonIndex)
             } else {
-                items.add(image) // Jika tidak ada tombol tambah, tambahkan di akhir
+                items.add(image)
                 notifyItemInserted(items.size - 1)
             }
         }
     }
-    // ----------------------------------------------------
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.carousel_image_view)
-        private val deleteButton: ImageView = itemView.findViewById(R.id.carousel_delete_button) // Referensi tombol delete
+        private val deleteButton: ImageView = itemView.findViewById(R.id.carousel_delete_button)
 
         fun bind(item: CarouselItem, realPosition: Int) {
             when (item) {
@@ -104,7 +99,7 @@ class MilestoneCarouselAdapter(
                     imageView.visibility = View.VISIBLE
                     deleteButton.visibility = View.VISIBLE // Tampilkan tombol delete
                 }
-                is CarouselItem.AddButton -> { /* Should not happen for ImageViewHolder */ }
+                is CarouselItem.AddButton -> {}
             }
 
             deleteButton.setOnClickListener {
@@ -117,7 +112,7 @@ class MilestoneCarouselAdapter(
     }
 
     inner class AddViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val addButton: ImageView = itemView.findViewById(R.id.carousel_add_button) // Referensi tombol tambah
+        private val addButton: ImageView = itemView.findViewById(R.id.carousel_add_button)
 
         fun bind() {
             addButton.setOnClickListener { onAddClick() }

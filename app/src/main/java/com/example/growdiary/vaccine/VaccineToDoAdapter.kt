@@ -1,22 +1,15 @@
 package com.example.growdiary.vaccine
 
-import android.app.PendingIntent.getActivity
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.example.growdiary.R
-import java.security.AccessController.getContext
 
 class VaccineToDoAdapter(private val vaccineData: List<Vaccine>) :
     RecyclerView.Adapter<VaccineToDoAdapter.MyViewHolder>() {
@@ -60,8 +53,6 @@ class VaccineToDoAdapter(private val vaccineData: List<Vaccine>) :
 
         // Set checkbox state
         holder.vaccineCheckbox.isChecked = vaccine.vaccineChecked
-
-        // Apply foreground tint if checked
 
         // Checkbox change listener
         holder.vaccineCheckbox.setOnCheckedChangeListener { _, isChecked ->

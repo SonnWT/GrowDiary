@@ -1,7 +1,6 @@
 package com.example.growdiary.profile
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.growdiary.databinding.ActivityManageProfileBinding
 import android.app.Activity
@@ -57,7 +56,6 @@ class ManageProfileActivity : AppCompatActivity() {
     }
 
     private fun validateInput(): Boolean {
-        // Reset error sebelumnya
         binding.tilUsername.error = null
         binding.tilOldPassword.error = null
         binding.tilNewPassword.error = null
