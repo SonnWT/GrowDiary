@@ -332,7 +332,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Children Follow Your Actions, Not Just Words"
+                        android:text="Growing Strong Through Play"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/black"
                         android:textSize="16sp"
@@ -342,7 +342,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Model the behavior you want to see, rather than only giving instructions."
+                        android:text="Invite your child to explore the outdoors. Every step, jump, and climb builds their motor skills and sparks their joy."
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/black"
                         android:textStyle="italic"
