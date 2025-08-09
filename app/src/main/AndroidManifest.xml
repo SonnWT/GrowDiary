@@ -28,7 +28,8 @@
 
         <activity
             android:name=".profile.AddChildActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".profile.ManageProfileActivity"

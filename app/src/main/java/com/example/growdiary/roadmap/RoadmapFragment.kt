@@ -83,6 +83,19 @@ class RoadmapFragment : Fragment(), RoadmapProgressListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val headerLayout = view.findViewById<View>(R.id.header_layout)
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            val statusBarHeight = resources.getDimensionPixelSize(resourceId)
+            headerLayout.setPadding(
+                headerLayout.paddingLeft,
+                statusBarHeight,
+                headerLayout.paddingRight,
+                headerLayout.paddingBottom
+            )
+        }
+
         super.onViewCreated(view, savedInstanceState)
         val defaultSelection = "0 - 6 Bulan"
         val spinnerPosition = adapter.getPosition(defaultSelection)

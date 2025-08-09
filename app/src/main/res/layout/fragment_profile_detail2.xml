@@ -22,7 +22,7 @@
             android:id="@+id/btn_back"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="8dp"
             android:clickable="true"
             android:contentDescription="Back"
@@ -34,9 +34,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image_detail"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginTop="46dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="60dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/profile_joseph"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"

@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.growdiary.R
 import java.util.*
+import android.view.WindowManager // Import WindowManager di sini
 
 class FirstKidFragment : Fragment() {
     private lateinit var ivMaleGender: ImageView
@@ -42,6 +43,8 @@ class FirstKidFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // --- Tambahkan kode ini untuk mengatur mode input saat fragment dibuat ---
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         return inflater.inflate(R.layout.fragment_first_kid, container, false)
     }
 
@@ -199,5 +202,11 @@ class FirstKidFragment : Fragment() {
         }
 
         popupWindow.showAsDropDown(anchorView)
+    }
+
+    // --- Tambahkan metode ini untuk mengembalikan mode input saat fragment dihancurkan ---
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED)
     }
 }

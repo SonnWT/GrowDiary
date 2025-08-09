@@ -7,8 +7,6 @@
     tools:context=".vaccine.Vaccine0_6Fragment"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +46,7 @@
         android:paddingBottom="24dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingHorizontal="20dp">
@@ -74,7 +72,7 @@
                 android:text="Joseph"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/merah"
-                android:textSize="19sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
