@@ -47,7 +47,8 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_vaccine, container, false)
         spinner = view.findViewById(R.id.select_spinner)
-        progressTextView = view.findViewById(R.id.progress_text_value) // Inisialisasi TextView progres
+        progressTextView = view.findViewById(R.id.progress_text_value) // Inisialisasi TextView progress
+        val vaccineHistoryRecyclerView = view.findViewById<RecyclerView>(R.id.vaccineHistoryRecyclerView)
 
         adapter = object : ArrayAdapter<String>(requireContext(), R.layout.spinner_dropdown_item, R.id.spinner_item_text, items) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -84,6 +85,24 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
             }
             override fun onNothingSelected(parent: AdapterView<*>) { /* Do nothing */ }
         }
+
+        val vaccineList: MutableList<Vaccine> = ArrayList();
+        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_1, false))
+        vaccineList.add(Vaccine("Bacillus Calmette–Guérin", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_2, false))
+        vaccineList.add(Vaccine("Hepatitis B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_3, false))
+        vaccineList.add(Vaccine("DPT", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_4, false))
+        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_5, false))
+
+        vaccineHistoryRecyclerView.layoutManager = LinearLayoutManager(context)
+        vaccineHistoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        vaccineHistoryRecyclerView.setHasFixedSize(true)
+
+        val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList) { position ->
+            if (position == 0) {
+                findNavController().navigate(R.id.vaccineDetailFragment)
+            }
+        }
+        vaccineHistoryRecyclerView.adapter = vaccineHistoryAdapter
         return view
     }
 

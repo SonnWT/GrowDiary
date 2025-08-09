@@ -76,6 +76,7 @@
         android:scrollbars="vertical"
         android:background="@drawable/edit_text_bg"
         android:text=""
+        android:textSize="14sp"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintTop_toTopOf="@id/bottom_diary"
         app:layout_constraintStart_toStartOf="parent"

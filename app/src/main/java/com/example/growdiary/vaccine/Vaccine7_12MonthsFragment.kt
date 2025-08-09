@@ -43,7 +43,6 @@ class Vaccine7_12MonthsFragment : Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_vaccine_ranges, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val vaccineHistoryRecyclerView = view.findViewById<RecyclerView>(R.id.vaccineHistoryRecyclerView)
 
         val vaccineList: MutableList<Vaccine> = ArrayList();
         vaccineList.add(Vaccine("Influenza", "2ND DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_7, false))
@@ -54,17 +53,9 @@ class Vaccine7_12MonthsFragment : Fragment(){
         vaccineList.add(Vaccine("Hepatitis A", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_5, false))
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        vaccineHistoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
-        vaccineHistoryRecyclerView.setHasFixedSize(true)
         val adapter = VaccineToDoAdapter(vaccineList)
-        val vaccineHistoryAdapter = VaccineHistoryAdapter(vaccineList) { position ->
-            if (position == 0) {
-                findNavController().navigate(R.id.vaccineDetailFragment)
-            }
-        }
 
         recyclerView.adapter = adapter
-        vaccineHistoryRecyclerView.adapter = vaccineHistoryAdapter
 
         return view
     }
