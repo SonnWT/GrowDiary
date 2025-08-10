@@ -28,9 +28,9 @@ class Roadmap1_2YearsFragment : Fragment() {
     // Untuk melacak progres:
     private var progressListener: RoadmapProgressListener? = null
     private val milestoneStatus: MutableMap<Int, Boolean> = mutableMapOf() // Map: ImageViewId -> isCompleted (has custom image)
-    private val TOTAL_MILESTONES_6_12_MONTHS = 16
+    private val TOTAL_MILESTONES_1_2_YEARS = 15 // Updated total milestones
 
-    // 1. Enum untuk menentukan perilaku penambahan gambar
+    // Enum untuk menentukan perilaku penambahan gambar
     private enum class AddBehavior { AT_START, AT_END }
     // Variabel untuk menyimpan perilaku yang sedang diminta
     private var currentAddBehavior: AddBehavior = AddBehavior.AT_END
@@ -40,7 +40,7 @@ class Roadmap1_2YearsFragment : Fragment() {
     ) { uri: Uri? ->
         uri?.let {
             val newImageItem = CarouselItem.ImageUri(it)
-            // 4. Panggil addImage dengan perilaku yang sesuai dari state
+            // Panggil addImage dengan perilaku yang sesuai dari state
             val addAtStart = currentAddBehavior == AddBehavior.AT_START
             carouselAdapter.addImage(newImageItem, addAtStart)
 
@@ -71,7 +71,6 @@ class Roadmap1_2YearsFragment : Fragment() {
         } else if (context is RoadmapProgressListener) {
             // Jika Fragment ini di-host langsung oleh Activity
             progressListener = context as RoadmapProgressListener
-        } else {
         }
     }
 
@@ -91,6 +90,7 @@ class Roadmap1_2YearsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize milestone statuses
         milestoneStatus[R.id.image_item_3] = false
         milestoneStatus[R.id.image_item_4] = false
         milestoneStatus[R.id.image_item_5] = false
@@ -101,7 +101,7 @@ class Roadmap1_2YearsFragment : Fragment() {
         milestoneStatus[R.id.image_item_10] = false
         milestoneStatus[R.id.image_item_11] = false
         milestoneStatus[R.id.image_item_12] = false
-        milestoneStatus[R.id.image_item_13] = false
+        milestoneStatus[R.id.image_item_13] = false // This will be set to false by setupCardView
         milestoneStatus[R.id.image_item_14] = false
         milestoneStatus[R.id.image_item_15] = false
         milestoneStatus[R.id.image_item_16] = false
@@ -238,17 +238,14 @@ class Roadmap1_2YearsFragment : Fragment() {
             addBehavior = AddBehavior.AT_END
         )
 
+        // *** MODIFIED ITEM 13 SETUP ***
         setupCardView(
             view = view,
             cardId = R.id.card_item_13,
             thumbnailImageViewId = R.id.image_item_13,
-            dialogTitle = "Mencoret - coret",
-            initialCarouselItems = listOf(
-                CarouselItem.ImageResource(R.drawable.baby_see_hand),
-                CarouselItem.ImageResource(R.drawable.baby_sitting),
-                CarouselItem.AddButton
-            ),
-            addBehavior = AddBehavior.AT_END
+            dialogTitle = "Mencoret - coret", // Changed title to match the new XML
+            initialCarouselItems = listOf(CarouselItem.AddButton), // Changed to start empty
+            addBehavior = AddBehavior.AT_START // Changed to add new images at the start
         )
 
         setupCardView(
@@ -307,28 +304,25 @@ class Roadmap1_2YearsFragment : Fragment() {
         updateOverallProgress()
     }
 
-    // Fungsi bantu yang diperbarui tanpa parameter deleteButtonId
     private fun setupCardView(
         view: View,
         cardId: Int,
         thumbnailImageViewId: Int,
         dialogTitle: String,
         initialCarouselItems: List<CarouselItem>,
-        addBehavior: AddBehavior // Tambahkan parameter addBehavior
+        addBehavior: AddBehavior
     ) {
         val cardView: CardView? = view.findViewById(cardId)
-        val thumbnailImageView: ImageView? = view.findViewById(thumbnailImageViewId)
-
-        // Setel OnClickListener untuk CardView
         cardView?.setOnClickListener {
             showCarouselPopupDialog(
                 title = dialogTitle,
                 initialItems = initialCarouselItems,
                 targetImageViewId = thumbnailImageViewId,
-                addBehavior = addBehavior // Teruskan addBehavior
+                addBehavior = addBehavior
             )
         }
 
+        // Set initial milestone status based on whether there are pre-existing images
         if (initialCarouselItems.any { it !is CarouselItem.AddButton }) {
             milestoneStatus[thumbnailImageViewId] = true
         } else {
@@ -355,48 +349,52 @@ class Roadmap1_2YearsFragment : Fragment() {
         closeButton.setOnClickListener { dialog.dismiss() }
 
         carouselAdapter = MilestoneCarouselAdapter(carouselItems) {
-            // Sebelum membuka galeri, simpan perilaku yang diminta ke state
             currentAddBehavior = addBehavior
             pickImageLauncher.launch("image/*")
         }
-        carouselAdapter.onItemRemoved = { realPosition ->
-            // Ketika item dihapus dari carousel, perbarui indikator titik
+        carouselAdapter.onItemRemoved = {
             setupDotsIndicator()
-            if (carouselAdapter.getRealItemCount() == 1 && carouselItems.firstOrNull() is CarouselItem.AddButton) {
+            // Check if the only remaining item is the add button
+            if (carouselItems.all { it is CarouselItem.AddButton }) {
                 val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
-                targetImageView?.setImageDrawable(null) // Hapus gambar thumbnail utama
-                milestoneStatus[targetImageViewId] = false // Update status milestone
-                updateOverallProgress() // Laporkan progres ke parent
+                targetImageView?.setImageResource(R.drawable.ic_lock) // Revert to lock icon
+                targetImageView?.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                val padding = (20 * resources.displayMetrics.density).toInt()
+                targetImageView?.setPadding(padding, padding, padding, padding)
+
+                milestoneStatus[targetImageViewId] = false // Update status
+                updateOverallProgress()
             }
         }
         viewPager.adapter = carouselAdapter
 
         setThumbnailButton.setOnClickListener {
-            // Periksa apakah ada item yang bisa dipilih selain tombol tambah
-            if (carouselAdapter.getRealItemCount() <= 0) {
+            val realItems = carouselItems.filter { it !is CarouselItem.AddButton }
+            if (realItems.isEmpty()) {
+                // Can't set a thumbnail if there are no images.
                 return@setOnClickListener
             }
 
             val currentPosition = viewPager.currentItem
-            val realPosition = currentPosition % carouselAdapter.getRealItemCount()
-            val selectedItem = carouselItems[realPosition] // Menggunakan carouselItems karena realPosition merujuk ke indeks di sini
+            val realPosition = currentPosition % realItems.size
+            val selectedItem = realItems[realPosition]
 
             val targetImageView = requireView().findViewById<ImageView>(targetImageViewId)
 
             when (selectedItem) {
                 is CarouselItem.ImageResource -> {
                     targetImageView?.setImageResource(selectedItem.drawableRes)
-                    milestoneStatus[targetImageViewId] = true // Update status milestone
-                    updateOverallProgress() // Laporkan progres ke parent
+                    milestoneStatus[targetImageViewId] = true
+                    updateOverallProgress()
                 }
                 is CarouselItem.ImageUri -> {
                     targetImageView?.setImageURI(selectedItem.uri)
-                    milestoneStatus[targetImageViewId] = true // Update status milestone
-                    updateOverallProgress() // Laporkan progres ke parent
+                    milestoneStatus[targetImageViewId] = true
+                    updateOverallProgress()
                 }
-                is CarouselItem.AddButton -> {
-                    // Jika tombol tambah terpilih, jangan lakukan apa-apa atau berikan feedback
-                    return@setOnClickListener
+                else -> {
+                    // This else branch handles the AddButton case and makes the 'when' exhaustive.
+                    // We don't do anything here because AddButton is filtered out from realItems.
                 }
             }
 
@@ -456,11 +454,9 @@ class Roadmap1_2YearsFragment : Fragment() {
         }
     }
 
-    // Fungsi untuk memperbarui progres keseluruhan dan melaporkannya ke parent
     private fun updateOverallProgress() {
-        val completedCount = milestoneStatus.count { it.value } // Hitung yang statusnya true
-        val totalCount = milestoneStatus.size // Total milestone adalah ukuran map
-
+        val completedCount = milestoneStatus.count { it.value }
+        val totalCount = milestoneStatus.size
         progressListener?.onProgressUpdated(completedCount, totalCount)
     }
 }

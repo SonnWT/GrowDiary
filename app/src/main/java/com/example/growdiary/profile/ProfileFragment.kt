@@ -95,8 +95,8 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
         // Amati data profil pengguna utama
         viewModel.userProfile.observe(viewLifecycleOwner) { profile ->
             // 1. Set username dan email dari data ViewModel
-            binding.tvUsername.text = "Fikri ganteng"
-            binding.tvEmail.text = "fikrilovebaylee@gmail.com"
+            binding.tvUsername.text = "Wilson & Totok"
+            binding.tvEmail.text = "wilsonlovetotok@gmail.com"
 
             // 2. Logika untuk mengatur gambar profil
             if (profile.avatarUri != null) {
@@ -104,7 +104,7 @@ class ProfileFragment : Fragment(), ChildAdapter.OnChildItemClickListener {
                 binding.ivAvatar.setImageURI(Uri.parse(profile.avatarUri))
             } else {
                 // Jika tidak ada, gunakan gambar default dari drawable
-                binding.ivAvatar.setImageResource(R.drawable.fikri)
+                binding.ivAvatar.setImageResource(R.drawable.profile_love)
             }
         }
 
