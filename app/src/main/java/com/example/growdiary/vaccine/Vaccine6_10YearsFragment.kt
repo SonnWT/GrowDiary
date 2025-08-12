@@ -41,12 +41,15 @@ class Vaccine6_10YearsFragment : Fragment(){
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
         val vaccineList: MutableList<Vaccine> = ArrayList();
-        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_1, false))
-        vaccineList.add(Vaccine("Bacillus Calmette–Guérin", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_2, false))
-        vaccineList.add(Vaccine("Hepatitis B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_3, false))
-        vaccineList.add(Vaccine("DPT", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_4, false))
-        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_5, false))
 
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.polio, false) )
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.bcg, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.hepatitisb, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.dpt, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.hib, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.pcv, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.rotavirus, false))
+        vaccineList.add(Vaccine("Template", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.influenza, false))
         recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = VaccineToDoAdapter(vaccineList)
 

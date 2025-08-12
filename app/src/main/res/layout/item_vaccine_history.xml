@@ -22,7 +22,7 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:padding="15dp"
-                android:src="@drawable/vaccine_icon_2"/>
+                android:src="@drawable/polio"/>
 
             <TextView
                 android:id="@+id/vaccineHistoryName"

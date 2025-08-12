@@ -79,11 +79,17 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
         }
 
         val vaccineList: MutableList<Vaccine> = ArrayList();
-        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_1, false))
-        vaccineList.add(Vaccine("Bacillus Calmette–Guérin", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_2, false))
-        vaccineList.add(Vaccine("Hepatitis B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_3, false))
-        vaccineList.add(Vaccine("DPT", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_4, false))
-        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.vaccine_icon_5, false))
+        vaccineList.add(Vaccine("Polio", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.polio, false))
+        vaccineList.add(Vaccine("Bacillus Calmette–Guérin", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.bcg, false))
+        vaccineList.add(Vaccine("Hepatitis B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.hepatitisb, false))
+        vaccineList.add(Vaccine("DPT", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.dpt, false))
+        vaccineList.add(Vaccine("Haemophilus Influenzae Type B", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.hib, false))
+        vaccineList.add(Vaccine("PCV", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.pcv, false))
+        vaccineList.add(Vaccine("Rotavirus", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.rotavirus, false))
+        vaccineList.add(Vaccine("Influenza", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.influenza, false))
+        vaccineList.add(Vaccine("MMR", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.mmr, false) )
+        vaccineList.add(Vaccine("JE Vaccine", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.je, false) )
+        vaccineList.add(Vaccine("Hepatitis A", "1ST DOSE", "PRIORITY", "02/01/2024", R.drawable.hepatitisa, false) )
 
         vaccineHistoryRecyclerView.layoutManager = LinearLayoutManager(context)
         vaccineHistoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
@@ -115,7 +121,7 @@ class Vaccine0_6Fragment : Fragment(), VaccineProgressListener {
         val newFragment: Fragment = when (position) {
             0 -> Vaccine0_6MonthsFragment()
             1 -> Vaccine7_12MonthsFragment()
-            2 -> Vaccine1_2YearssFragment()
+            2 -> Vaccine1_2YearsFragment()
             3 -> Vaccine3_5YearsFragment()
             4 -> Vaccine6_10YearsFragment()
             else -> Roadmap0_6MonthsFragment()

@@ -48,6 +48,12 @@ class VaccineToDoAdapter(private val vaccineData: List<Vaccine>) :
             holder.vaccineToDoImage.setImageResource(vaccine.vaccineImage!!)
         }
 
+        if(vaccine.vaccinePriority == "OPTIONAL")
+        {
+            holder.vaccineToDoPriority.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.rounded_vaccine_label_3)
+            holder.vaccineToDoPriority.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+        }
+
         // Prevent old listeners from triggering
         holder.vaccineCheckbox.setOnCheckedChangeListener(null)
 
