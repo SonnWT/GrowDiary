@@ -20,9 +20,7 @@ android {
     }
 
     buildFeatures {
-        // Contoh: mengaktifkan View Binding atau Data Binding
         viewBinding = true
-        // dataBinding = true // uncomment jika Anda ingin menggunakan Data Binding
     }
 
     buildTypes {

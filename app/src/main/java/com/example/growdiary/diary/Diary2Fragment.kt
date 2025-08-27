@@ -25,7 +25,7 @@ class Diary2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_diary1, container, false)
+        val view = inflater.inflate(R.layout.fragment_diary2, container, false)
 
         val trash = view.findViewById<ImageView>(R.id.trash)
         val editText = view.findViewById<TextView>(R.id.isi_diary)

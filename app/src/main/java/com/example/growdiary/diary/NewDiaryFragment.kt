@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.Scroller
 import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.ImageSlider
-import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.growdiary.R
 
@@ -43,7 +42,7 @@ class NewDiaryFragment : Fragment() {
         val slideModels = ArrayList<SlideModel>()
 
         if (slideModels.none { it.imagePath == R.drawable.tambah }) {
-            slideModels.add(SlideModel(R.drawable.baca))
+            slideModels.add(SlideModel(R.drawable.jungkir))
             slideModels.add(SlideModel(R.drawable.tambah))
         }
         imageSlider?.setImageList(slideModels, true)
@@ -53,31 +52,6 @@ class NewDiaryFragment : Fragment() {
             imageSlider?.visibility = View.VISIBLE
             silang?.visibility = View.VISIBLE
         }
-
-
-//        imageSlider.setItemClickListener(object : ItemClickListener {
-//            override fun onItemSelected(position: Int) {
-//                val selectedImage = slideModels[position]
-//
-//                // Jika yang diklik adalah gambar "tambah"
-//                if (selectedImage.imagePath == R.drawable.tambah) {
-//                    val newImage = SlideModel(R.drawable.baca)
-//
-//                    // Hapus semua tambah
-//                    slideModels.removeAll { it.imagePath == R.drawable.tambah }
-//
-//                    // Tambahkan gambar baru di awal
-//                    slideModels.add(0, newImage)
-//
-//                    // Tambah kembali tombol tambah di akhir
-//                    slideModels.add(SlideModel(R.drawable.tambah))
-//
-//                    imageSlider.setImageList(slideModels, true)
-//                }
-//
-//
-//            }
-//        })
 
         silang?.setOnClickListener {
             showCustomPhotoDeleteDialog {

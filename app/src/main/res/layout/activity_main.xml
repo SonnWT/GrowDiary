@@ -21,13 +21,13 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottom_nav_card"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="18dp"
         app:cardBackgroundColor="#F98167"
-        app:cardElevation="8dp"
+        app:cardElevation="0dp"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CornerSize50Percent">
 
         <LinearLayout
@@ -50,8 +50,8 @@
                     android:layout_height="wrap_content">
                     <View
                         android:id="@+id/indicator_home"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:background="@drawable/nav_active_background"
                         android:visibility="gone" />
                     <LinearLayout
@@ -72,7 +72,7 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="Home"
                             android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:textSize="9sp" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
@@ -89,8 +89,8 @@
                     android:layout_height="wrap_content">
                     <View
                         android:id="@+id/indicator_vaccine"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:background="@drawable/nav_active_background"
                         android:visibility="gone" />
                     <LinearLayout
@@ -111,7 +111,7 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="Vaccine"
                             android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:textSize="9sp" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
@@ -133,8 +133,8 @@
                     android:layout_height="wrap_content">
                     <View
                         android:id="@+id/indicator_diary"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:background="@drawable/nav_active_background"
                         android:visibility="gone" />
                     <LinearLayout
@@ -155,7 +155,7 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="Diary"
                             android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:textSize="9sp" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
@@ -171,8 +171,8 @@
                     android:layout_height="wrap_content">
                     <View
                         android:id="@+id/indicator_profile"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:background="@drawable/nav_active_background"
                         android:visibility="gone" />
                     <LinearLayout
@@ -193,7 +193,7 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="Profile"
                             android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:textSize="9sp" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
@@ -203,7 +203,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="12dp"
+        android:elevation="0dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:translationY="30dp"
@@ -223,13 +223,14 @@
             app:tint="#F98167" />
 
         <TextView
+            android:id="@+id/tulisanRoadMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Roadmap"
             android:textColor="@android:color/white"
-            android:textSize="10sp"
+            android:textSize="9sp"
             android:textStyle="bold" />
 
     </LinearLayout>

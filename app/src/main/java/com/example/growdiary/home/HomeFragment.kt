@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,7 +18,6 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.button.MaterialButton
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -30,17 +27,13 @@ import kotlin.math.roundToInt
 
 import androidx.navigation.fragment.findNavController
 
-// Pastikan mengimpor DiaryAdapter dan DiaryItem dari package yang benar
-// Contoh: import com.your_app_name.adapters.DiaryAdapter (jika di folder adapters)
-// Contoh: import com.your_app_name.models.DiaryItem (jika di folder models)
-
-class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener { // Implementasikan interface dengan benar
+class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
     private lateinit var diaryAdapter: DiaryAdapter
-    private lateinit var diaryRecyclerView: RecyclerView // Hanya satu deklarasi ini yang dibutuhkan
+    private lateinit var diaryRecyclerView: RecyclerView
 
     // Deklarasi view dari fragment_home.xml
     private lateinit var heightChart: LineChart
-    private lateinit var weightChart: LineChart // Nama variabel ini sekarang unik
+    private lateinit var weightChart: LineChart
     private lateinit var chartHorizontalScrollView: android.widget.HorizontalScrollView
     private lateinit var carouselDotsContainer: LinearLayout
     private lateinit var textChartTitle: TextView
@@ -77,7 +70,7 @@ class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener { // Implement
         profileInfoContainer = view.findViewById(R.id.profile_info_container)
 
         // Set profil default saat fragment pertama kali dibuat
-        updateCurrentProfile("Joseph", R.drawable.profile_joseph, "1 tahun 3 bulan")
+        updateCurrentProfile("Joseph", R.drawable.profile_joseph, "1 year 3 months")
 
         return view
     }
@@ -88,7 +81,7 @@ class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener { // Implement
         // --- Setup Komponen UI ---
         setupHeightChart()
         setupWeightChart()
-        setupDiaryRecyclerView() // Panggil setup RecyclerView di sini
+        setupDiaryRecyclerView()
         setupCarouselDots()
         setupChartScrollViewListener()
         updateChartTitle(0)
@@ -122,10 +115,10 @@ class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener { // Implement
                 hideProfileSelectionPopup()
                 findNavController().navigate(R.id.editProfileFragment)
             }
-            profileJosephPopup?.setOnClickListener { updateCurrentProfile("Joseph", R.drawable.profile_joseph, "1 tahun 3 bulan"); hideProfileSelectionPopup() }
-            profileChristopher?.setOnClickListener { updateCurrentProfile("Christopher Setiawan", R.drawable.profile_joseph, "1 tahun 1 bulan"); hideProfileSelectionPopup() }
-            profileMichael?.setOnClickListener { updateCurrentProfile("Michael Onasis Hasri", R.drawable.profile_joseph, "1 tahun 5 bulan"); hideProfileSelectionPopup() }
-            profileGandhi?.setOnClickListener { updateCurrentProfile("Gandhi Winata Susilo", R.drawable.profile_joseph, "1 tahun 0 bulan"); hideProfileSelectionPopup() }
+            profileJosephPopup?.setOnClickListener { updateCurrentProfile("Joseph", R.drawable.profile_joseph, "1 year 3 months"); hideProfileSelectionPopup() }
+            profileChristopher?.setOnClickListener { updateCurrentProfile("Christopher Setiawan", R.drawable.profile_joseph, "1 year 1 months"); hideProfileSelectionPopup() }
+            profileMichael?.setOnClickListener { updateCurrentProfile("Michael Onasis Hasri", R.drawable.profile_joseph, "1 year 5 months"); hideProfileSelectionPopup() }
+            profileGandhi?.setOnClickListener { updateCurrentProfile("Gandhi Winata Susilo", R.drawable.profile_joseph, "1 year 0 months"); hideProfileSelectionPopup() }
 
             rootViewGroup.addView(profileSelectionPopupView)
         }
@@ -345,27 +338,6 @@ class HomeFragment : Fragment(), DiaryAdapter.OnItemClickListener { // Implement
 
     // --- Implementasi OnItemClickListener dari DiaryAdapter ---
     override fun onItemClick(position: Int) {
-        // Di sini Anda bisa menggunakan `position` jika Anda ingin menavigasi ke Fragment yang berbeda
-        // berdasarkan posisi item yang diklik.
-        // Untuk contoh ini, kita akan selalu ke Diary1Fragment.
         findNavController().navigate(R.id.action_homeFragment_to_diary1)
-
-        // Contoh jika Anda ingin menavigasi ke Fragment yang berbeda berdasarkan data item:
-        // val selectedDiaryItem = (diaryRecyclerView.adapter as DiaryAdapter).diaryList[position]
-        // when (selectedDiaryItem.description) {
-        //     "Joseph Merangkak" -> findNavController().navigate(R.id.action_homeFragment_to_diary1)
-        //     "Joseph Main" -> findNavController().navigate(R.id.action_homeFragment_to_diary2) // Misalnya ke Diary2Fragment
-        //     // ... dan seterusnya
-        // }
     }
 }
-
-/*
-Penting: Pindahkan `DiaryItem` dan `DiaryAdapter` ke file Kotlin terpisah
-untuk praktik terbaik dalam struktur proyek Android.
-
-Contoh struktur file:
-- app/src/main/java/com/example/growdiary/home/HomeFragment.kt
-- app/src/main/java/com/example/growdiary/home/DiaryItem.kt  <-- Pindahkan DiaryItem ke sini
-- app/src/main/java/com/example/growdiary/home/DiaryAdapter.kt <-- Pindahkan DiaryAdapter ke sini
-*/

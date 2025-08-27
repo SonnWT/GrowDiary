@@ -1,14 +1,10 @@
 package com.example.growdiary.diary
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import android.widget.SearchView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +46,8 @@ class DiaryFragment : Fragment() {
             }else if (position == 2){
                 // ke Fragment B
                 findNavController().navigate(R.id.diary2)
+            }else{
+                findNavController().navigate(R.id.diary1)
             }
 
         }
@@ -63,6 +61,7 @@ class DiaryFragment : Fragment() {
 
         diaryImage = arrayOf(
             0,
+            R.drawable.suntik,
             R.drawable.merangkak,
             R.drawable.main,
             R.drawable.bicara,
@@ -74,6 +73,7 @@ class DiaryFragment : Fragment() {
 
         diaryTitle = arrayOf(
             "",
+            getString(R.string.title_suntik),
             getString(R.string.title_merangkak),
             getString(R.string.title_main),
             getString(R.string.title_bicara),

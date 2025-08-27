@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,29 +35,44 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image_edit"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="102dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/profile_joseph"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="56dp"/>
+            app:layout_constraintVertical_bias="0.0"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+            app:srcCompat="@drawable/profile_joseph" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_edit_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Ubah Foto Profil"
+            android:src="@android:drawable/ic_menu_camera"
+            app:backgroundTint="#008080"
+            app:elevation="4dp"
+            app:fabCustomSize="32dp"
+            app:layout_constraintBottom_toBottomOf="@id/profile_image_edit"
+            app:layout_constraintEnd_toEndOf="@id/profile_image_edit"
+            app:tint="#FFFFFFFF" />
 
         <TextView
             android:id="@+id/text_name_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Joseph"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto_bold"
+            android:text="Joseph"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/profile_image_edit"
-            app:layout_constraintTop_toTopOf="@id/profile_image_edit"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="16dp"/>
+            app:layout_constraintTop_toTopOf="@id/profile_image_edit" />
 
         <ImageView
             android:id="@+id/btn_edit_name"
@@ -76,19 +92,17 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fitsSystemWindows="true"
         app:layout_constraintTop_toBottomOf="@id/top_bar_container_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation_placeholder_edit"
-        android:fillViewport="true"
-        android:paddingTop="20dp"
+        android:paddingTop="0dp"
         android:background="@drawable/rounded_scrollview_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="5dp"
             android:paddingBottom="10dp">
 
             <androidx.cardview.widget.CardView
@@ -104,7 +118,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingHorizontal="16dp"
-                    android:paddingTop="16dp"
                     android:paddingBottom="5dp">
 
                     <TextView
@@ -125,7 +138,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="0.95"
                             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             app:boxBackgroundColor="#E9E9E9"
                             app:boxCornerRadiusTopStart="8dp"
@@ -146,13 +159,15 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:dropDownHeight="145dp"
                                 android:popupBackground="@drawable/dropdown_menu_background"
-                                android:ellipsize="end"         android:maxLines="1" /> </com.google.android.material.textfield.TextInputLayout>
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:singleLine="true"/> </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:layout_weight="1.4"
+                            android:layout_weight="1.25"
                             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                             app:boxBackgroundColor="#E9E9E9"
                             app:boxCornerRadiusTopStart="8dp"
@@ -166,14 +181,16 @@
                                 android:id="@+id/autocomplete_month"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:paddingVertical="12dp"
-                                android:textColor="@color/black"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/poppins_regular"
                                 android:dropDownHeight="145dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/poppins_regular"
+                                android:inputType="none"
+                                android:maxLines="1"
+                                android:paddingVertical="12dp"
                                 android:popupBackground="@drawable/dropdown_menu_background"
-                                android:ellipsize="end"         android:maxLines="1"            android:singleLine="true"/>    </com.google.android.material.textfield.TextInputLayout>
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />    </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
@@ -200,7 +217,9 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:dropDownHeight="145dp"
                                 android:popupBackground="@drawable/dropdown_menu_background"
-                                android:ellipsize="end"         android:maxLines="1" /> </com.google.android.material.textfield.TextInputLayout>
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:singleLine="true"/> </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <TextView
@@ -242,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Weight"
+                        android:text="Weight (kg)"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -264,7 +283,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Height"
+                        android:text="Height (cm)"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -305,28 +324,29 @@
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_save_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:textColor="@android:color/white"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginEnd="120dp"
+                        app:cornerRadius="24dp"
+                        app:backgroundTint="@color/aqua" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@android:color/transparent" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:textSize="18sp"
-                android:fontFamily="@font/roboto_bold"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="120dp"
-                app:cornerRadius="24dp"
-                app:backgroundTint="@color/aqua"
-                app:layout_constraintBottom_toTopOf="@id/bottom_navigation_placeholder_edit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
         </LinearLayout>
     </ScrollView>
 
@@ -338,8 +358,6 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="103dp" /> </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

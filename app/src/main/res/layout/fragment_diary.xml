@@ -49,6 +49,7 @@
         android:textColor="@color/pink"
         android:textSize="26sp"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,6 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         tools:listitem="@layout/grid_item"/>
 
 

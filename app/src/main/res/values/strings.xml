@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">GrowDiary</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_merangkak">Joseph Merangkak</string>
     <string name="title_bicara">Joseph Bicara</string>
@@ -10,6 +9,8 @@
     <string name="title_main_air">Joseph Main Air</string>
     <string name="title_makan">Joseph Makan</string>
     <string name="title_tengkurap">Joseph Tengkurap</string>
+    <string name="title_suntik">Joseph Vaksin Hepatitis</string>
+    <string name="title_jungkir">Joseph Jungkir Balik</string>
 
 
     <string name="isi_diary1">Hari ini, tanggal 2 Juni 2025, jadi salah satu hari yang tidak akan pernah Mama lupakan. Untuk pertama kalinya, Joseph merangkak sendiri! 😭💛
@@ -18,4 +19,29 @@ Awalnya cuma bolak-balik badan, lalu tiba-tiba dia dorong tubuh mungilnya ke dep
 Masih pelan, masih goyah, tapi semangatmu besar sekali. Mama bangga sekali sama kamu, Joseph. Tumbuhlah sehat, kuat, dan bahagia selalu. Langkah kecilmu hari ini adalah awal dari petualangan besar di dunia ini. 💫
 
 </string>
+    <string-array name="profile_options_array">
+        <item>Opsi</item>
+        <item>Profile Edit</item>
+        <item>Logout</item>
+    </string-array>
+    <string-array name="months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
 </resources>

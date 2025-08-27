@@ -90,6 +90,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/profileDetailFragment2"
+        android:name="com.example.growdiary.profile.ProfileDetailFragment2"
+        android:label="ProfileDetail"
+        tools:layout="@layout/fragment_profile_detail2">
+        <action
+            android:id="@+id/action_profileDetailFragment2_to_editProfileFragment2"
+            app:destination="@id/editProfileFragment2" />
+        <argument
+            android:name="childPosition"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
         android:id="@+id/profileDetailFragment"
         android:name="com.example.growdiary.profile.ProfileDetailFragment"
         android:label="ProfileDetail"
@@ -97,6 +111,10 @@
         <action
             android:id="@+id/action_profileDetailFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <argument
+            android:name="childPosition"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
     <fragment
@@ -112,8 +130,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/editProfileFragment2"
+        android:name="com.example.growdiary.profile.EditProfileFragment2"
+        android:label="EditProfile2"
+        tools:layout="@layout/fragment_edit_profile2">
+        <action
+            android:id="@+id/action_editProfileFragment2_to_profileDetailFragment2"
+            app:destination="@id/profileDetailFragment"
+            app:popUpTo="@id/profileDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
         android:id="@+id/vaccineFragment"
-        android:name="com.example.growdiary.vaccine.VaccineFragment"
+        android:name="com.example.growdiary.vaccine.Vaccine0_6Fragment"
         android:label="Vaccine" />
 
     <fragment
@@ -131,6 +161,16 @@
         android:id="@+id/profileFragment"
         android:name="com.example.growdiary.profile.ProfileFragment"
         android:label="Profile" />
+    <action
+        android:id="@+id/action_profileFragment_to_LoginFragment"
+        app:destination="@id/loginFragment" />
 
+    <action
+        android:id="@+id/action_profileFragment_to_editProfileFragment2"
+        app:destination="@id/editProfileFragment2" />
+
+    <action
+        android:id="@+id/action_profileFragment_to_profileDetailFragment2"
+        app:destination="@id/profileDetailFragment2" />
 
 </navigation>

@@ -1,38 +1,37 @@
 package com.example.growdiary
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
-import com.example.growdiary.diary.DiaryFragment
-import com.example.growdiary.home.HomeFragment
-import com.example.growdiary.profile.ProfileFragment // Jika ini adalah Profile utama Anda
-import com.example.growdiary.roadmap.RoadmapFragment
-import com.example.growdiary.vaccine.VaccineFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.example.growdiary.firstkid.FirstKidFragment // Penting: import FirstKidFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navIndicators: List<View>
     private lateinit var fabRoadmap: FloatingActionButton
     private lateinit var bottomNav : MaterialCardView
+    private lateinit var tulisanRoadMap : TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // --- Inisialisasi Tombol & Indikator ---
         val navHome: LinearLayout = findViewById(R.id.nav_home)
         val navVaccine: LinearLayout = findViewById(R.id.nav_vaccine)
         val navDiary: LinearLayout = findViewById(R.id.nav_diary)
         val navProfile: LinearLayout = findViewById(R.id.nav_profile)
         fabRoadmap = findViewById(R.id.fab_roadmap)
         bottomNav = findViewById(R.id.bottom_nav_card)
+        tulisanRoadMap = findViewById(R.id.tulisanRoadMap)
 
         val indicatorHome: View = findViewById(R.id.indicator_home)
         val indicatorVaccine: View = findViewById(R.id.indicator_vaccine)
@@ -47,14 +46,15 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.diary1, R.id.newDiary, R.id.diary2, R.id.firstKidFragment, R.id.loginFragment,
-                     R.id.registerFragment, R.id.diaryBacaFragment -> { // TAMBAHKAN firstKidFragment DI SINI
+                     R.id.registerFragment, R.id.diaryBacaFragment, R.id.vaccineDetailFragment -> {
                     bottomNav.visibility = View.GONE
                     fabRoadmap.visibility = View.GONE
+                    tulisanRoadMap.visibility = View.GONE
                 }
                 else -> {
                     bottomNav.visibility = View.VISIBLE
                     fabRoadmap.visibility = View.VISIBLE
-                    // Set indikator aktif saat kembali ke fragmen navigasi utama
+                    tulisanRoadMap.visibility = View.VISIBLE
                     when (destination.id) {
                         R.id.homeFragment -> setActiveIndicator(indicatorHome)
                         R.id.vaccineFragment -> setActiveIndicator(indicatorVaccine)
@@ -63,7 +63,11 @@ class MainActivity : AppCompatActivity() {
                         R.id.diaryLuar1Fragment -> setActiveIndicator(indicatorDiary)
                         R.id.diaryLuar2Fragment -> setActiveIndicator(indicatorDiary)
                         R.id.diaryTambahFragment -> setActiveIndicator(indicatorDiary)
-                        R.id.profileFragment -> setActiveIndicator(indicatorProfile) // Pastikan ini merujuk ke ID yang benar
+                        R.id.profileFragment -> setActiveIndicator(indicatorProfile)
+                        R.id.editProfileFragment -> setActiveIndicator(indicatorHome)
+                        R.id.editProfileFragment2 -> setActiveIndicator(indicatorProfile)
+                        R.id.profileDetailFragment->setActiveIndicator(indicatorHome)
+                        R.id.profileDetailFragment2->setActiveIndicator(indicatorProfile)
                         R.id.roadmapFragment -> { resetIndicators(); setFabState(true) }
                         else -> resetIndicators()
                     }
@@ -89,13 +93,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         navProfile.setOnClickListener {
-            navController.navigate(R.id.profileFragment) // Pastikan ini adalah ID fragment profile yang ingin ditampilkan oleh bottom nav
+            navController.navigate(R.id.profileFragment)
         }
-
-        // Tidak perlu `if (savedInstanceState == null)` di sini
-        // karena `app:startDestination` di `nav_graph.xml` sudah menangani navigasi awal.
-        // Jika Anda ingin mengontrol indikator awal (yang seharusnya disembunyikan untuk FirstKidFragment),
-        // itu sudah diatur di addOnDestinationChangedListener.
     }
 
     private fun resetIndicators() {

@@ -10,16 +10,15 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.growdiary.R
 import java.util.*
+import android.view.WindowManager
 
 class FirstKidFragment : Fragment() {
     private lateinit var ivMaleGender: ImageView
@@ -42,6 +41,7 @@ class FirstKidFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         return inflater.inflate(R.layout.fragment_first_kid, container, false)
     }
 
@@ -116,44 +116,6 @@ class FirstKidFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.btn_done).setOnClickListener {
-//            val name = view.findViewById<EditText>(R.id.et_name).text.toString().trim()
-//            val age = etAge.text.toString().trim()
-//            val day = etDay.text.toString().trim()
-//            val month = etMonth.text.toString().trim()
-//            val year = etYear.text.toString().trim()
-//            val height = view.findViewById<EditText>(R.id.et_height).text.toString().trim()
-//            val weight = view.findViewById<EditText>(R.id.et_weight).text.toString().trim()
-//
-//            if (name.isEmpty() || age.isEmpty() || day.isEmpty() || month.isEmpty() || year.isEmpty() || height.isEmpty() || weight.isEmpty()) {
-//                Toast.makeText(requireContext(), "Harap isi semua informasi!", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//
-//            if (age.toIntOrNull() == null) {
-//                Toast.makeText(requireContext(), "Usia harus angka valid!", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//
-//            try {
-//                val cal = Calendar.getInstance()
-//                // Konversi nama bulan ke indeks (0=Januari)
-//                val monthIndex = monthNames.indexOf(month)
-//                if (monthIndex == -1) {
-//                    Toast.makeText(requireContext(), "Bulan tidak valid!", Toast.LENGTH_SHORT).show()
-//                    return@setOnClickListener
-//                }
-//                cal.set(year.toInt(), monthIndex, day.toInt())
-//                // Periksa apakah tanggal yang disetel sesuai dengan input asli (untuk menangani tanggal tidak valid seperti 31 Februari)
-//                if (cal.get(Calendar.MONTH) != monthIndex || cal.get(Calendar.DAY_OF_MONTH) != day.toInt()) {
-//                    Toast.makeText(requireContext(), "Tanggal lahir tidak valid!", Toast.LENGTH_SHORT).show()
-//                    return@setOnClickListener
-//                }
-//            } catch (e: Exception) {
-//                Toast.makeText(requireContext(), "Tanggal lahir tidak valid!", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//
-//            Toast.makeText(requireContext(), "Data telah diisi!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_firstKidFragment_to_homeFragment)
         }
     }
@@ -192,12 +154,17 @@ class FirstKidFragment : Fragment() {
             popupWindow.dismiss()
         }
 
-        // Set seleksi pada ListView agar item yang sudah dipilih berada di tengah jika memungkinkan
         val selectedIndex = items.indexOf(targetEditText.text.toString())
         if (selectedIndex != -1) {
             listView.setSelection(selectedIndex)
         }
 
         popupWindow.showAsDropDown(anchorView)
+    }
+
+    // --- Tambahkan metode ini untuk mengembalikan mode input saat fragment dihancurkan ---
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED)
     }
 }

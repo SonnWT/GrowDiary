@@ -11,23 +11,25 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.growdiary.R
-import com.example.growdiary.roadmap.Roadmap0_6MonthsFragment // Import Fragment 0-6 Bulan
-// Import Fragment-fragment roadmap lainnya setelah Anda membuatnya
-// import com.example.growdiary.roadmap.fragments.Roadmap7_12MonthsFragment
-// import com.example.growdiary.roadmap.fragments.Roadmap1_2YearsFragment
-// dst.
 
-class RoadmapFragment : Fragment() {
+// Interface untuk komunikasi dari child fragment ke parent fragment
+interface RoadmapProgressListener {
+    fun onProgressUpdated(completedMilestones: Int, totalMilestones: Int)
+}
+
+class RoadmapFragment : Fragment(), RoadmapProgressListener {
 
     private lateinit var spinner: Spinner
     private lateinit var adapter: ArrayAdapter<String>
     private val items = arrayOf(
-        "0 - 6 Bulan",
-        "7 - 12 Bulan",
-        "1 - 2 Tahun",
-        "3 - 5 Tahun",
-        "6 - 10 Tahun"
+        "0 - 6 Months",
+        "7 - 12 Months",
+        "1 - 2 Years",
+        "3 - 5 Years",
+        "6 - 10 Years"
     )
+
+    private lateinit var progressTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,7 @@ class RoadmapFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_roadmap, container, false)
         spinner = view.findViewById(R.id.select_spinner)
+        progressTextView = view.findViewById(R.id.progress_text_value) // Inisialisasi TextView progres
 
         adapter = object : ArrayAdapter<String>(requireContext(), R.layout.spinner_dropdown_item, R.id.spinner_item_text, items) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -69,20 +72,33 @@ class RoadmapFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 loadRoadmapFragment(position)
             }
-            override fun onNothingSelected(parent: AdapterView<*>) { /* Do nothing */ }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val headerLayout = view.findViewById<View>(R.id.header_layout)
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            val statusBarHeight = resources.getDimensionPixelSize(resourceId)
+            headerLayout.setPadding(
+                headerLayout.paddingLeft,
+                statusBarHeight,
+                headerLayout.paddingRight,
+                headerLayout.paddingBottom
+            )
+        }
+
         super.onViewCreated(view, savedInstanceState)
         val defaultSelection = "0 - 6 Bulan"
         val spinnerPosition = adapter.getPosition(defaultSelection)
         if (spinnerPosition >= 0) {
             spinner.setSelection(spinnerPosition)
-            // Muat Fragment roadmap default saat fragment utama dibuat
             loadRoadmapFragment(spinnerPosition)
         }
+        onProgressUpdated(0, 0)
     }
 
     private fun loadRoadmapFragment(position: Int) {
@@ -90,26 +106,26 @@ class RoadmapFragment : Fragment() {
         val newFragment: Fragment = when (position) {
             0 -> Roadmap0_6MonthsFragment()
             1 -> {
-                // TODO: Buat dan muat Roadmap7_12MonthsFragment()
-                // Untuk saat ini, kita bisa fallback atau tampilkan placeholder
-                // return Roadmap7_12MonthsFragment()
-                Roadmap0_6MonthsFragment() // Sementara gunakan 0-6 Bulan sebagai placeholder
+                Roadmap6_12MonthsFragment()
             }
             2 -> {
-                // TODO: Buat dan muat Roadmap1_2YearsFragment()
-                Roadmap0_6MonthsFragment() // Sementara
+                Roadmap1_2YearsFragment()
             }
             3 -> {
-                // TODO: Buat dan muat Roadmap3_5YearsFragment()
-                Roadmap0_6MonthsFragment() // Sementara
+                Roadmap0_6MonthsFragment()
             }
             4 -> {
-                // TODO: Buat dan muat Roadmap6_10YearsFragment()
-                Roadmap0_6MonthsFragment() // Sementara
+                Roadmap0_6MonthsFragment()
             }
-            else -> Roadmap0_6MonthsFragment() // Fallback
+            else -> Roadmap0_6MonthsFragment()
         }
         fragmentTransaction.replace(R.id.roadmap_fragment_container, newFragment)
         fragmentTransaction.commit()
+    }
+
+    // Implementasi metode dari interface RoadmapProgressListener
+    override fun onProgressUpdated(completedMilestones: Int, totalMilestones: Int) {
+        // Perbarui teks progres di UI RoadmapFragment
+        progressTextView.text = "$completedMilestones / $totalMilestones"
     }
 }
