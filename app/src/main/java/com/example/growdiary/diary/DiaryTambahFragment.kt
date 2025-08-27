@@ -64,7 +64,8 @@ class DiaryTambahFragment : Fragment() {
 
         diaryImage = arrayOf(
             0,
-            R.drawable.baca,
+            R.drawable.jungkir,
+            R.drawable.suntik,
             R.drawable.merangkak,
             R.drawable.main,
             R.drawable.bicara,
@@ -76,7 +77,8 @@ class DiaryTambahFragment : Fragment() {
 
         diaryTitle = arrayOf(
             "",
-            getString(R.string.title_baca),
+            getString(R.string.title_jungkir),
+            getString(R.string.title_suntik),
             getString(R.string.title_merangkak),
             getString(R.string.title_main),
             getString(R.string.title_bicara),

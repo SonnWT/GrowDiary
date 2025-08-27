@@ -42,7 +42,7 @@ class NewDiaryFragment : Fragment() {
         val slideModels = ArrayList<SlideModel>()
 
         if (slideModels.none { it.imagePath == R.drawable.tambah }) {
-            slideModels.add(SlideModel(R.drawable.baca))
+            slideModels.add(SlideModel(R.drawable.jungkir))
             slideModels.add(SlideModel(R.drawable.tambah))
         }
         imageSlider?.setImageList(slideModels, true)
